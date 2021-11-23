@@ -1,0 +1,424 @@
+{% extends 'base.html' %}
+{% load index %}
+{% load static %}
+
+{% block content %}
+<div class="dress-showcase">
+    <div class="dress-showcase-sidebar">
+        <ul class="dress-showcase-sidebar__ul">
+            <div id="menu">                
+                <!-- <li class="active">
+                    <a href="#suit-{{ two_piece_suit_sidebar_first_ele.title }}" class="btn btn-big">
+                        <div class="dress-showcase-sidebar__ul--img-section">
+                            <img class="dress-showcase-sidebar__ul--img-section--img"
+                                src="{{ two_piece_suit_sidebar_first_ele.img.url }}" />
+                            <span class="dress-showcase-sidebar__ul--img-section--title" style="font-size: 1.2rem;">
+                                {{ two_piece_suit_sidebar_first_ele.title }}</span>
+                            <span class="dress-showcase-sidebar__ul--img-section-active-icon"></span>
+                        </div>
+                    </a>
+                </li> -->
+                
+                {% for element in combines_ele_names %}
+                <li class="">
+                    <a href="#two-piece-suit-{{ element|index:2 }}" class="btn btn-big">
+                        <div class="dress-showcase-sidebar__ul--img-section">
+                            <img class="dress-showcase-sidebar__ul--img-section--img" src="{{ element|index:1 }}" />
+                            <span class="dress-showcase-sidebar__ul--img-section--title">{{ element|index:0 }}</span>
+                            <span class="dress-showcase-sidebar__ul--img-section-active-icon"></span>
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </div>            
+        </ul>
+    </div>
+
+    <div class="dress-showcase-preview-dress" 
+        style="background-image: url(https://rnd.tailorstore.com/as1/fHw5MHwjRkZGRkZGfHdlYnA,/eNqd0lkOgyAQBuC79LkpSlvTu5SGjDgqLYthuX9p1ZjYJcHwBBk-_gxz3Tk0DTpGfJSBkQ60BkbaqBQXoHnBSJm2UDspGLmDeGCq/ojwdHqsLPQym2-1XhrFOg_pAlDTSdAtSTs7pTKscZw6jYED1NtKi-Xlmx8sG-WCnUMkqtluiRx8WbEOToEaVc6GOIVjDe6vwFcMH/HLucGtLmPj5aa4bSYkOg0DuE5ouVKn6J_4cvOBs9Oj-Nzfqnbk_jG_Zz.webp)">
+        <div class="dress-showcase-preview-dress-navbar">
+            <img src="{% static 'images/iffi.jpeg' %}" />
+            <div class="dress-showcase-preview-dress-price"><span>Rs.13,430</span></div>
+        </div>
+        <div class="dress-showcase-preview-dress-button-section">
+            <a href="{% url 'body-measurements' %}">
+                <button class="dress-showcase-preview-dress-button-section__btn-continue">Continue <i
+                    class="fas fa-arrow-right"></i></button>
+            </a>
+            <button class="dress-showcase-preview-dress-button-section__btn-reset"> <i class="fas fa-undo"></i>
+                Reset</button>
+        </div>
+        <button class="dress-showcase-preview-dress-btn-zoom">
+            <i class="fas fa-search-plus"></i>
+            <!-- <i class="fas fa-search-minus"></i> -->
+        </button>
+    </div>
+</div>
+<div>
+    <!-- <a href="#modal-one" class="btn btn-big">Modal!</a> -->
+
+    <!-- Suit Prodcuts -->
+    <div class="modal" id="two-piece-suit-Products" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-header--title">Products</span>
+                <span class="modal-header--extra-text">SET TO DEFAULT</span>
+                <a href="#" class="btn-close" aria-hidden="true">×</a>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-item-list" id="suit-product-menu">
+                    {% for suit_product in suit_products %}
+                        {% if suit_product == suit_products|index:0 %}
+                            <a href="http://localhost:8000" style="text-decoration: none;">
+                                <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                                    <div class="modal-body-item-list__card--symbol"></div>
+                                    <img class="modal-body-item-list__card--thumb" src="{{ suit_product.img.url }}" />
+                                    <div class="modal-body-item-list__card--mid">{{ suit_product.title }}</div>
+                                    <div class="modal-body-item-list__card--price"></div>
+                                </div>
+                            </a>
+                        {% else %}
+                            <div class="modal-body-item-list__card">
+                                <div class="modal-body-item-list__card--symbol"></div>
+                                <img class="modal-body-item-list__card--thumb" src="{{ suit_product.img.url }}" />
+                                <div class="modal-body-item-list__card--mid">{{ suit_product.title }}</div>
+                                <div class="modal-body-item-list__card--price"></div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- <div class=" modal-footer"> -->
+            <!-- <a href="#" class="btn">Nice!</a> -->
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- /Suit Prodcuts -->
+
+    <!-- Two Piece Suit Fabric -->
+    <div class="modal" id="two-piece-suit-Fabric" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-header--title">Fabric</span>
+                <span class="modal-header--extra-text"></span>
+                <a href="#" class="btn-close" aria-hidden="true">×</a>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-item-list" id="two-piece-suit-fabric-menu">
+                    {% for fabric in fabrics %}
+                        {% if fabric == fabrics|index:0 %}
+                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                                <div class="modal-body-item-list__card--symbol"></div>
+                                <img class="modal-body-item-list__card--thumb"
+                                    src="{{ fabric.img.url }}" />
+                                <div class="modal-body-item-list__card--mid">{{ fabric.title }}</div>
+                                <div class="modal-body-item-list__card--price"></div>
+                            </div>                            
+                        {% else %}
+                            <div class="modal-body-item-list__card">
+                                <div class="modal-body-item-list__card--symbol"></div>
+                                <img class="modal-body-item-list__card--thumb"
+                                    src="{{ fabric.img.url }}" />
+                                <div class="modal-body-item-list__card--mid">{{ fabric.title }}</div>
+                                <div class="modal-body-item-list__card--price"></div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- <div class=" modal-footer"> -->
+            <!-- <a href="#" class="btn">Nice!</a> -->
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- /Two Piece Suit Fabric -->
+
+    <!-- Two Piece Suit Lining -->
+    <div class="modal" id="two-piece-suit-Lining" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-header--title">Lining</span>
+                <span class="modal-header--extra-text"></span>
+                <a href="#" class="btn-close" aria-hidden="true">×</a>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-item-list" id="two-piece-suit-lining-menu">
+                    {% for lining in linings %}
+                        {% if lining == linings|index:0 %}
+                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                                <div class="modal-body-item-list__card--symbol"></div>
+                                <img class="modal-body-item-list__card--thumb"
+                                    src="{{ lining.img.url }}" />
+                                <div class="modal-body-item-list__card--mid">{{ lining.title }}</div>
+                                <div class="modal-body-item-list__card--price"></div>
+                            </div>                            
+                        {% else %}
+                            <div class="modal-body-item-list__card">
+                                <div class="modal-body-item-list__card--symbol"></div>
+                                <img class="modal-body-item-list__card--thumb"
+                                    src="{{ lining.img.url }}" />
+                                <div class="modal-body-item-list__card--mid">{{ lining.title }}</div>
+                                <div class="modal-body-item-list__card--price"></div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- <div class=" modal-footer"> -->
+            <!-- <a href="#" class="btn">Nice!</a> -->
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- /Two Piece Suit Lining -->
+
+    <!-- Two Piece Suit Buttons -->
+    <div class="modal" id="two-piece-suit-Buttons" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-header--title">Buttons</span>
+                <span class="modal-header--extra-text"></span>
+                <a href="#" class="btn-close" aria-hidden="true">×</a>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-item-list" id="two-piece-suit-lining-menu">
+                    {% for button in buttons %}
+                        {% if button == buttons|index:0 %}
+                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                                <div class="modal-body-item-list__card--symbol"></div>
+                                <img class="modal-body-item-list__card--thumb"
+                                    src="{{ button.img.url }}" />
+                                <div class="modal-body-item-list__card--mid">{{ button.title }}</div>
+                                <div class="modal-body-item-list__card--price"></div>
+                            </div>                            
+                        {% else %}
+                            <div class="modal-body-item-list__card">
+                                <div class="modal-body-item-list__card--symbol"></div>
+                                <img class="modal-body-item-list__card--thumb"
+                                    src="{{ button.img.url }}" />
+                                <div class="modal-body-item-list__card--mid">{{ button.title }}</div>
+                                <div class="modal-body-item-list__card--price"></div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- <div class=" modal-footer"> -->
+            <!-- <a href="#" class="btn">Nice!</a> -->
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- /Two Piece Suit Buttons -->
+
+    <!-- Two Piece Suit Button Hole Thread -->
+    <div class="modal" id="two-piece-suit-Button-hole-thread" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-header--title">Button hole thread</span>
+                <span class="modal-header--extra-text"></span>
+                <a href="#" class="btn-close" aria-hidden="true">×</a>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-item-list" id="two-piece-suit-lining-menu">
+                    {% for button_hole_thread in button_hole_threads %}
+                        {% if button_hole_thread == button_hole_threads|index:0 %}
+                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                                <div class="modal-body-item-list__card--symbol"></div>
+                                <img class="modal-body-item-list__card--thumb"
+                                    src="{{ button_hole_thread.img.url }}" />
+                                <div class="modal-body-item-list__card--mid">{{ button_hole_thread.title }}</div>
+                                <div class="modal-body-item-list__card--price"></div>
+                            </div>                            
+                        {% else %}
+                            <div class="modal-body-item-list__card">
+                                <div class="modal-body-item-list__card--symbol"></div>
+                                <img class="modal-body-item-list__card--thumb"
+                                    src="{{ button_hole_thread.img.url }}" />
+                                <div class="modal-body-item-list__card--mid">{{ button_hole_thread.title }}</div>
+                                <div class="modal-body-item-list__card--price"></div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- <div class=" modal-footer"> -->
+            <!-- <a href="#" class="btn">Nice!</a> -->
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- /Two Piece Suit Button Hole Thread -->
+
+    <!-- Two Piece Suit Buttoning -->
+    <div class="modal" id="two-piece-suit-Buttoning" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-header--title">Buttoning</span>
+                <span class="modal-header--extra-text"></span>
+                <a href="#" class="btn-close" aria-hidden="true">×</a>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-item-list" id="two-piece-suit-lining-menu">
+                    {% for buttoning in buttonings %}
+                        {% if buttoning == buttonings|index:0 %}
+                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                                <div class="modal-body-item-list__card--symbol"></div>
+                                <img class="modal-body-item-list__card--thumb"
+                                    src="{{ buttoning.img.url }}" />
+                                <div class="modal-body-item-list__card--mid">{{ buttoning.title }}</div>
+                                <div class="modal-body-item-list__card--price"></div>
+                            </div>                            
+                        {% else %}
+                            <div class="modal-body-item-list__card">
+                                <div class="modal-body-item-list__card--symbol"></div>
+                                <img class="modal-body-item-list__card--thumb"
+                                    src="{{ buttoning.img.url }}" />
+                                <div class="modal-body-item-list__card--mid">{{ buttoning.title }}</div>
+                                <div class="modal-body-item-list__card--price"></div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- <div class=" modal-footer"> -->
+            <!-- <a href="#" class="btn">Nice!</a> -->
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- /Two Piece Suit Buttoning -->
+
+<script>
+    let currentParentLink = "";
+    let activeModalId = "";
+
+    $(document).ready(function () {
+
+        $("#menu li").click(function () {
+            debugger
+            $('#menu li').removeClass('active');
+            $(this).addClass('active');
+            let currentDiv = $(this)
+            activeModalId = currentDiv[0].firstElementChild.hash;
+        });
+        $(activeModalId + " .modal-body-item-list .modal-body-item-list__card").click(async function () {
+            $(activeModalId + " .modal-body-item-list .modal-body-item-list__card").removeClass('modal-body-item-list__card-active');
+            $(this).addClass('modal-body-item-list__card-active');
+            let resss = await getDataFromDatabase("a");
+
+            $(".dress-showcase-preview-dress").css('background-image', 'url(https://rnd.tailorstore.com/as1/fHw5MHwjRkZGRkZGfHdlYnA,/eNqt0sEOgjAMBuB38WwsUyL6LNYsBTZYhE7HOPj2ThSM3hwcl6zf_rU9rZziUjmErjbOI7B1LTUI2z1CS4ZlQa1MEDTlzhQIOXUK/QchEHuUOIU236ebK1Wr9L3S3lyc0h7C9V05q6rxiw9UiWtFrHe7MgQzzMtA7kW0aCkXZApnmUL52ikqEFyJr26huoHS8Nc1u5EQU/l_feWx6jDaGEEHHG9zr9zfx06XV89kmKQ3gk2vt0aiJFJNlSWIZbb8Jns6Hy_ADTBGUO.webp)');
+        });
+    });
+
+
+    function getDataFromDatabase(val) {
+        debugger
+        $.ajax({
+            url: (""),
+            type: "GET",
+            data: {
+                button_text: "btn_Text"
+            },
+            success: function (resp) {
+                return resp;
+            },
+            error: function (resp) {
+                console.log("something went wrong");
+                return resp
+            }
+        });
+    }
+
+
+
+
+    // // Get the container element
+    // var productsBtnContainer = document.getElementById("sub-menu");
+
+    // // Get all buttons with class="btn" inside the container
+    // var productsBtns = productsBtnContainer.getElementsByClassName("modal-body-item-list__card");
+    // debugger
+    // // Loop through the buttons and add the active class to the current/clicked button
+    // for (var i = 0; i < productsBtns.length; i++) {
+    //     productsBtns[i].addEventListener("click", function () {
+    //         var productsCurrent = document.getElementsByClassName("modal-body-item-list__card modal-body-item-list__card-active");
+
+    //         // If there's no active class
+    //         if (productsCurrent.length > 0) {
+    //             productsCurrent[0].className = productsCurrent[0].className.replace(" modal-body-item-list__card-active", "");
+    //         }
+
+    //         // Add the active class to the current/clicked button
+    //         this.className += " modal-body-item-list__card-active";
+    //     });
+    // }
+
+
+
+    // // Get the container element
+    // var suitProductsBtnContainer = document.getElementById("suit-product-menu");
+
+    // // Get all buttons with class="btn" inside the container
+    // var suitProductsBtns = suitProductsBtnContainer.getElementsByClassName("modal-body-item-list__card");
+
+    // // Loop through the buttons and add the active class to the current/clicked button
+    // for (var i = 0; i < suitProductsBtns.length; i++) {
+    //     suitProductsBtns[i].addEventListener("click", function () {
+    //         var suitProductsCurrent = document.getElementsByClassName("modal-body-item-list__card modal-body-item-list__card-active");
+
+    //         // If there's no active class
+    //         if (suitProductsCurrent.length > 0) {
+    //             suitProductsCurrent[0].className = suitProductsCurrent[0].className.replace(" modal-body-item-list__card-active", "");
+    //         }
+
+    //         // Add the active class to the current/clicked button
+    //         this.className += " modal-body-item-list__card-active";
+    //     });
+    // }
+
+    // // Get the container element
+    // var eleBtnContainer = document.getElementById("menu");
+
+    // // Get all buttons with class="btn" inside the container
+    // var eleBtns = eleBtnContainer.getElementsByClassName("inactive");
+
+    // // Loop through the buttons and add the active class to the current/clicked button
+    // for (var i = 0; i < eleBtns.length; i++) {
+    //     eleBtns[i].addEventListener("click", function () {
+    //         var eleCurrent = document.getElementsByClassName("active");
+
+    //         // If there's no active class
+    //         if (eleCurrent.length > 0) {
+    //             eleCurrent[0].className = eleCurrent[0].className.replace(" active", "");
+    //         }
+
+    //         // Add the active class to the current/clicked button
+    //         this.className += " active";
+    //     });
+    // }
+
+    // // Get the container element
+    // var sJButtoningBtnContainer = document.getElementById("two-piece-suit-fabric-menu");
+    // var btnTypeImage = sJButtoningBtnContainer.getElementsByClassName("dress-showcase-preview-dress");
+
+    // // Get all buttons with class="btn" inside the container
+    // var sJButtoningBtns = sJButtoningBtnContainer.getElementsByClassName("modal-body-item-list__card");
+
+    // // Loop through the buttons and add the active class to the current/clicked button
+    // for (var i = 0; i < sJButtoningBtns.length; i++) {
+    //     sJButtoningBtns[i].addEventListener("click", function () {
+    //         debugger
+    //         var sJButtoningCurrent = document.getElementsByClassName("modal-body-item-list__card modal-body-item-list__card-active");
+
+    //         // If there's no active class
+    //         if (sJButtoningCurrent.length > 0) {
+    //             for (var x; x < sJButtoningCurrent.length; x++) {
+    //                 sJButtoningCurrent[x].className = sJButtoningCurrent[x].className.replace(" modal-body-item-list__card-active", "");
+    //             }
+
+    //             //sJButtoningCurrent[0].className = sJButtoningCurrent[0].className.replace(" modal-body-item-list__card-active", "");
+    //         }
+
+    //         // Add the active class to the current/clicked button
+    //         this.className += " modal-body-item-list__card-active";
+    //         btnTypeImage.style.backgroundImage = dat[i]
+    //     });
+    // }
+</script>{% endblock content %}

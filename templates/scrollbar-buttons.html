@@ -1,0 +1,25 @@
+/* Buttons */
+            ::-webkit-scrollbar-button:single-button {
+              background-color: #bbbbbb;
+              border-style: solid;
+              height: 50px;
+              width: 16px;
+            }
+            /* Up */
+            ::-webkit-scrollbar-button:single-button:vertical:decrement {
+              border-width: 0 50px 50px 50px;
+              border-color: transparent transparent #555555 transparent;
+            }
+            
+            ::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+              border-color: transparent transparent #777777 transparent;
+            }
+            /* Down */
+            ::-webkit-scrollbar-button:single-button:vertical:increment {
+              border-width: 50px 50px 0 50px;
+              border-color: #555555 transparent transparent transparent;
+            }
+            
+            ::-webkit-scrollbar-button:vertical:single-button:increment:hover {
+              border-color: #777777 transparent transparent transparent;
+            }

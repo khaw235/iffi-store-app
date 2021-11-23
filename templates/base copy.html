@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="responsive ">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="msapplication-TileColor" content="#1a2d40">
+        <meta name="theme-color" content="#1a2d40">
+
+        <meta name="msapplication-TileImage" content="{% static 'images/mstile-144x144.png' %}">
+        <meta name="msapplication-config" content="{% static 'xml/browserconfig.xml' %}">
+        
+
+        <title>Tailor Store</title>
+
+
+        <link rel="canonical" href="http://www.tailorstore.com/suit-designer?fbclid=IwAR320ooHc70LjrQNTkyffhAAKJxRyBxcLckx91ojjbjjU7cQeycI54GtFKw"/>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+        <link rel="stylesheet" href="{% static 'site.css' %}"/>
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+
+        <link rel="manifest" href="{% static 'manifest/site.webmanifest' %}">
+
+        <link rel="mask-icon" href="{% static 'svg/safari-pinned-tab.svg' %}" color="#1a2d40">
+
+        <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}">
+
+        <link rel="preload" href="{% static 'fonts/fa-light-300.woff2' %}" as="font" crossorigin="anonymous">
+        <link rel="preload" href="{% static 'fonts/fa-brands-400.woff2' %}" as="font" crossorigin="anonymous">
+
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet" type="text/css">
+
+
+        <script type="text/javascript" src="{% static 'js/MooTools-Core-1.6.0-compressed.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/MooTools-More-1.6.0-compressed.js' %}" defer></script>
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    </head>
+
+    <body class="emerald emerald-mens_suit_designer emerald-alpha page-emerald notouch emerald-webp landscape">
+        {% block content %}{% endblock content %}
+    </body>
+</html>

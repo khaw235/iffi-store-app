@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}<div id="modalOverlay">
+	<div id="modal">
+		<div id="modalCloser" class="fal fa-times-circle f-fluid c-pointer"></div>
+		<div id="modalContent"></div>
+	</div>
+</div>
+
+<div id="messages"></div>
+
+<div class="spinner-cover nofade">
+	<div class>
+		<i class="fas fa-spinner-third"></i>
+	</div>
+</div>
+
+<div class="page">
+    <div id="viewport" class="viewport-fluid portrait extreme">
+        <div id="canvasses">
+            <div id="canvas-back" class="canvas" style="background-image: url("{% static 'index/images/darkblue-suit-main.webp' %}")"></div>
+
+            <div id="canvas-front" class="canvas" style="background-image: url("{% static 'index/images/darkblue-shirt-main.webp' %}");"></div>
+        </div>
+    </div>
+
+    <div id="ui" class="ui">
+        
+        <div id="windows">
+            <div id="prod_sidebar">WELCOME</div>
+
+            <div class="simpleHeader fl-flex-0-0" style="display: inline-block;">
+                <a class="logo" href="/"><img src="{% static 'index/svg/TailorStore-logo-gold-nopayoff.svg' %}" alt="Tailor Store&trade; Logo" /></a>
+            </div>
+
+            <div id="beginHere">Start here</div>
+
+            <div class="priceBox">
+                <div class="hide-on-mobile">
+                    <a class="primaryButton addToCart">
+                        Continue<span class="fal fa-arrow-right m-1-h icon-right"></span>
+                    </a>
+                    <a class="resetButton secondaryButton withBorder small hide-on-mobile"><span class="fal fa-redo"></span><b class="text">Reset</b></a>
+                </div>
+
+                <div class="hide-on-desktop hide-on-tablet">
+                    <a class="primaryButton addToCart symbolonly m-1-b">
+                        <span class="fal fa-arrow-right"></span>
+                    </a><br />
+                    <a class="resetButton secondaryButton withBorder symbolonly small"><span class="fal fa-redo"></span></a>
+                </div>
+
+                <div id="finalPrice" class="price">&nbsp;</div>
+
+                <div class="hide">
+                    <a class="discreteButton mini m4t" id="showLogBtn">Log</a>
+                </div>
+            </div>
+
+            <div id="viewSwitcher">
+                <div id="zoom-in">
+                    <span class="fal fa-search-plus"></span>
+                </div>
+
+                <div id="zoom-out">
+                    <span class="fal fa-search-minus"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="template" id="choiceWindowTemplate">
+        <div class="titleBar">
+            <h1>Title</h1>
+
+            <span class="resetLink">Set to default</span>
+            <span class="icon close fal fa-times"></span>
+        </div>
+    </div>
+    
+    <div class="template" id="splashScreenTemplate">
+        <div class="splashScreen">
+            <h5></h5>
+
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    
+    <div class="template" id="multiChoiceWindowTemplate">
+        <div class="titleBar">
+            <h1>Title</h1>
+
+            <span class="resetLink">Set to default</span>
+            <span class="icon close fal fa-times"></span>
+        </div>
+
+        <div class="windowContent hasIscroll">
+            <ul></ul>
+        </div>
+    </div>
+    
+    <div class="template collectionBar" id="quickCollectionTemplate">
+        <ul class="collection">
+        </ul>
+    </div>
+    
+    <div class="template infoLink" id="infoLinkTemplate">
+	    <span class="fal fa-info-circle"></span><a href="#"></a>
+    </div>
+    
+    <ul class="template">
+        <li class="template" id="listItemTemplate">
+            <div class="symbols"></div>
+
+            <img class="thumb" src="" alt="" />
+
+            <div class="mid">
+                <h2></h2>
+
+                <span></span>
+
+                <div class="tags"></div>
+
+                <p class="reason-wrapper"><span class="fal fa-info-circle"></span><span class="reason"></span></p>
+            </div>
+
+            <div class="prices"></div>
+        </li>
+
+        <li class="template" id="menuItemTemplate">
+            <span></span>
+
+            <div class="mod"></div>
+        </li>
+
+        <li class="template" id="menuBackItemTemplate">
+            <span class="fal fa-arrow-down"></span>
+            <span class="fal fa-arrow-left"></span>
+            <span>Back</span>
+        </li>
+
+        <li class="template radioImageOption" id="radioImageOptionTemplate"><img src="" alt="" /></li>
+
+        <li class="template selectInput" id="selectInputTemplate">
+            <h3></h3>
+
+            <select></select>
+        </li>
+
+        <li class="template textInput" id="textInputTemplate">
+            <h3></h3>
+
+            <p></p>
+
+            <form>
+                <input type="text" />
+            </form>
+        </li>
+
+        <li class="template radioImageInput" id="radioImageInputTemplate">
+            <h3></h3>
+
+            <ul>
+            </ul>
+        </li>
+
+        <li class="template detailImage" id="detailImageTemplate">
+            <img src="" alt="" />
+        </li>
+    </ul>
+    
+    <div class="template" id="menuBarTemplate">
+        <ul>
+        </ul>
+    </div>
+    
+    <div class="template nullChoice" id="nullChoiceTemplate">
+	    <button class="infoButton"><span class="fal fa-times"></span></button>
+    </div>
+    
+    <div class="template searchBar" id="searchBarTemplate">
+        <form>
+            <input type="text" placeholder="Search, e.g. blue striped oxford linen, etc.">
+
+            <button class="infoButton goSearch">Search</button>
+            <button class="disabledButton clearSearch">X</button>
+        </form>
+    </div>
+    
+    <div class="template backToMenu" id="backToMenuTemplate">
+	    <span>Back</span>
+    </div>
+    
+    <div class="template ratings" id="ratingTemplate">
+        <div class="rate">
+            <img class="stars-gray" src="//cdn.tailorstore.com/ui/gefjun/stars2.svg" alt="" />
+            <img class="stars-gold" src="//cdn.tailorstore.com/ui/gefjun/stars-gold.svg" alt="" />
+        </div>
+
+        <div class="numreviews"></div>
+    </div>
+
+    <div class="template contrastFabricMenuIcon" id="contrastFabricMenuIconTemplate">
+        <img class="placementIcon" alt="" />
+        <img class="fabricIcon" alt="" />
+    </div>
+    
+    <div class="template detailImage" id="fixedDetailImageTemplate">
+        <img src="" alt="" class="img-responsive" />
+    </div>
+
+    <div class="template detailText" id="detailTextTemplate">
+        <span></span>
+    </div>
+
+    <div class="template detailImage embroideryDetailImage" id="embroideryDetailImageTemplate">
+        <img src="" alt="" />
+    </div>
+    
+    <button class="template button secondaryButton withBorder small" id="infoButtonTemplate">Info</button>
+
+    <div class="template filterPane" id="filterPaneTemplate">
+        <div class="filters collapse"></div>
+
+        <div class="collapseButtonArea">
+            <button class="infoButton small filterButton"><span class="fal fa-filter"></span>Filter</button>
+            <button class="disabledButton small clearFilterButton"><span class="fal fa-times"></span>Reset filter</button>
+        </div>
+    </div>
+
+    <div class="template filter" id="filterTemplate">
+        <h4></h4>
+        <ul></ul>
+    </div>
+</div>{% endblock content %}  

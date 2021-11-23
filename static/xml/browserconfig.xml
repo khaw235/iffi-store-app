@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            <square70x70logo src="https://cdn1.tailorstore.com/favicons/mstile-70x70.png?v=yyL2BxEPvE"/>
+            <square150x150logo src="https://cdn1.tailorstore.com/favicons/mstile-150x150.png?v=yyL2BxEPvE"/>
+            <square310x310logo src="https://cdn1.tailorstore.com/favicons/mstile-310x310.png?v=yyL2BxEPvE"/>
+            <wide310x150logo src="https://cdn1.tailorstore.com/favicons/mstile-310x150.png?v=yyL2BxEPvE"/>
+            <TileColor>#1a2d40</TileColor>
+        </tile>
+    </msapplication>
+</browserconfig>

@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load index %}
+{% load static %}
+
+{% block content %}<div class="top-navbar">
+        <nav>
+            <div class="navbar">
+                <ul>
+                    <li class="border-bottom">
+                        <a href=""> Shop </a>
+                    </li>
+                    <li class="border-bottom">
+                        <a href=""> About us </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar">
+                <div class="top-navbar-logo text-center">
+                    <a href="">
+                        <img src="{% static 'images/iffi.jpeg' %}" />
+                    </a>
+                </div>
+            </div>
+            <div class="navbar">
+                <ul class="f-right">
+                    <li>
+                        <a href="">
+                            <i class="far fa-heart"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fas fa-shopping-bag"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content p-5">
+        <div class="text-center">
+            <div class="p-5">
+                <h2 class="heading-1">Shopping Cart</h2>
+            </div>
+
+        </div>
+        <hr />
+        <div class="cart-cart-list py-5">
+            <div class="cart-card">
+                <div class="cart-card--img-section">
+                    <img class="cart-card--img-section__img"
+                        src="https://rnd.tailorstore.com/as1/NDUwfDQ1MHw5MHwjRkZGRkZGfGpwZWc,/eNqt0s0OgjAMB_B38WwsU-LHs1izFNhgETod4-DbO1AxetLBccn6239tjwunuFAOoa2M8whsXUM1wnqL0JBhmVMjE4TSUWEU-9WF/y8Xy1ypNmTM5QkatQhAykQe5QUjTdRoH3ey5h6YQtvPKSU2tV2y4nEXLO63DnSmQYZ4HeiaydU2haDdDpimUr5yiAuGByMrWqh0o/HW-Ns3txIorLOu8tv6INoYQQccbnOv3NfHXpcez7JMU-PBLtvTs1kiKSbCgsw7Uz4bO7ofJ0B4LdeFU,.jpg" />
+                </div>
+                <div class="cart-card--body">
+                    <span class="cart-card--body__name">Men's shirt</span>
+                    <span class="cart-card--body__desc">Belmont, mid blue - <a href="/">More info</a></span>
+                    <div class="cart-card--body__btn-section">
+                        <button>Customize</button>
+                        <button>Choose another profile</button>
+                    </div>
+                    <div class="cart-card--counter">
+                        <i class="fa-solid fa-minus"></i>
+                        <span>1</span>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="cart-card--price">Rs. 89</span>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="grid-row">
+            <div class="col-2 pt-3">
+                <div class="input-group">
+                    <input type="text" placeholder="Gift voucher / campaing code">
+                    <div class="addon">
+                        <button>Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 checkout-price-section pt-4">
+                <div class="d-flex justify-content-between my-2">
+                    <div class="checkout-price-section-name">Subtotal</div>
+                    <div class="checkout-price-section-price">Rs. 89</div>
+                </div>
+                <div class="d-flex justify-content-between my-2">
+                    <div class="checkout-price-section-name">Delivery</div>
+                    <div class="checkout-price-section-price">Rs. 9</div>
+                </div>
+                <div class="d-flex justify-content-between my-2">
+                    <div class="checkout-price-section-name">Amount to pay </div>
+                    <div class="checkout-price-section-price">Rs. 98</div>
+                </div>
+                <small class="f-right">Import charges included in the price</small>
+            </div>
+        </div>
+        <div class="text-center pt-5">
+            <a href="/" class="btn-primary"> Continue</a>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-section">
+            <div class="footer-section__div">
+                <ul>
+                    <li>
+                        <a href=""><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fab fa-youtube"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-section__div">
+                <p>
+                    Copyright © IFFI. All rights reserved.
+                </p>
+            </div>
+            <div class="footer-section__div">
+                <ul>
+                    <li>
+                        <a href=""><i class="fab fa-cc-mastercard"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="{% static 'images/easypaisa.svg' %}" /></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="{% static 'images/jazzcash.svg' %}" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>{% endblock content %}

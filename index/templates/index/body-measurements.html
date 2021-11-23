@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load index %}
+{% load static %}
+
+{% block content %}<div class="top-navbar">
+        <nav>
+            <div class="navbar">
+                <ul>
+                    <li class="border-bottom">
+                        <a href=""> Shop </a>
+                    </li>
+                    <li class="border-bottom">
+                        <a href=""> About us </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar">
+                <div class="top-navbar-logo text-center">
+                    <a href="">
+                        <img src="{% static 'images/iffi.jpeg' %}" />
+                    </a>
+                </div>
+            </div>
+            <div class="navbar">
+                <ul class="f-right">
+                    <li>
+                        <a href="">
+                            <i class="far fa-heart"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fas fa-shopping-bag"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content p-5">
+        <div class="text-center">
+            <div class="p-5">
+                <h2 class="heading-1">Choose your measurements</h2>
+            </div>
+            <div class="p-3">
+                <p class="heading-5">
+                    Already a customer? Please <a href="">log in</a> now to access your
+                    measurements.
+                </p>
+            </div>
+            <div class="p-1">
+                <i class="fas fa-arrow-down heading-icon"></i>
+            </div>
+            <div class="p-5">
+                <h3 class="heading-3">Create your measurements</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="measurements-section">
+                <form action="">
+                    <div class="form-group">
+                        <label>Age <span class="label--addon">30 years</span></label>
+                        <input type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>Body height <span class="label--addon">7' 2"</span></label>
+                        <input type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>Weight <span class="label--addon">187 lbs</span></label>
+                        <input type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>Shoe size <span class="label--addon">US 6</span></label>
+                        <input type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>Activity level
+                            <span class="label--addon">Moderate</span></label>
+                        <input type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>Fit</label>
+                        <select name="" id="">
+                            <option value="slim-fit">Slim Fit</option>
+                            <option value="regular-fit">Regular Fit</option>
+                            <option value="loose-fit">Loose Fit</option>
+                        </select>
+                    </div>
+                    <div class="text-center py-3">
+                        <!-- <input type="submit" class="btn-primary" value="Continue" /> -->
+                        <a href="/cart" class="btn-primary"> Continue</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-section">
+            <div class="footer-section__div">
+                <ul>
+                    <li>
+                        <a href=""><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fab fa-youtube"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-section__div">
+                <p>
+                    Copyright © IFFI. All rights reserved.
+                </p>
+            </div>
+            <div class="footer-section__div">
+                <ul>
+                    <li>
+                        <a href=""><i class="fab fa-cc-mastercard"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="{% static 'images/easypaisa.svg' %}" /></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="{% static 'images/jazzcash.svg' %}" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>{% endblock content %}
