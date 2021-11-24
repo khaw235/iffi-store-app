@@ -1,8 +1,12 @@
 from django.contrib.auth import authenticate, login, get_user_model
 from django.shortcuts import render, redirect
-from .models import TwoPieceSuitSideBarElement, TwoPieceSuit, SuitProduct, Fabric, Lining, \
-    Button, ButtonHoleThread, Buttoning, Lapel, Pocket, Vent, Contrast, \
-TrouserPocket, TrouserButtoning, TrouserBackPocket, TrouserTurnUp
+from .models import TwoPieceSuitSideBarElement, TwoPieceSuit, \
+    SuitProduct, Fabric, Lining, Button, ButtonHoleThread, \
+        Buttoning, Lapel, LapelStitch, PocketFlap, TicketPocket, Vent, \
+            StitchingThread, SleeveButtonContrast, SleeveButtonThread, \
+                NeckFeltContrast, TrouserPocket, TrouserButtoning, \
+                    TrouserBackPocketPlacement, TrouserBackPocketDesign, \
+                        TrouserTurnUp
 from json import dumps
 from .forms import UserLoginForm, UserRegistrationForm
 
@@ -18,12 +22,18 @@ def index(request):
     button_hole_threads               = ButtonHoleThread.objects.all()
     buttonings                        = Buttoning.objects.all()
     lapels                            = Lapel.objects.all()
-    pockets                           = Pocket.objects.all()
+    lapel_stitches                    = LapelStitch.objects.all()
+    pocket_flaps                      = PocketFlap.objects.all()
+    ticket_pockets                    = TicketPocket.objects.all()
     vents                             = Vent.objects.all()
-    contrasts                         = Contrast.objects.all()
+    stitching_threads                 = StitchingThread.objects.all()
+    sleeve_buttons_contrasts          = SleeveButtonContrast.objects.all()
+    sleeve_buttons_threads            = SleeveButtonThread.objects.all()
+    neck_felt_contrasts               = NeckFeltContrast.objects.all()
     trouser_pockets                   = TrouserPocket.objects.all()
     trouser_buttonings                = TrouserButtoning.objects.all()
-    trouser_back_pockets              = TrouserBackPocket.objects.all()
+    trouser_back_pocket_placements    = TrouserBackPocketPlacement.objects.all()
+    trouser_back_pocket_designs       = TrouserBackPocketDesign.objects.all()
     trouser_turn_ups                  = TrouserTurnUp.objects.all()
 
     combines_ele_names = []
@@ -51,12 +61,18 @@ def index(request):
         "button_hole_threads": button_hole_threads,
         "buttonings": buttonings,
         "lapels": lapels,
-        "pockets": pockets,
+        "lapel_stitches": lapel_stitches,
+        "pocket_flaps": pocket_flaps,
+        "ticket_pockets": ticket_pockets,
         "vents": vents,
-        "contrasts": contrasts,
+        "stitching_threads": stitching_threads,
+        "sleeve_buttons_contrasts": sleeve_buttons_contrasts,
+        "sleeve_buttons_threads": sleeve_buttons_threads,
+        "neck_felt_contrasts": neck_felt_contrasts,
         "trouser_pockets": trouser_pockets,
         "trouser_buttonings": trouser_buttonings,
-        "trouser_back_pockets": trouser_back_pockets,
+        "trouser_back_pocket_placements": trouser_back_pocket_placements,
+        "trouser_back_pocket_designs": trouser_back_pocket_designs,
         "trouser_turn_ups": trouser_turn_ups,
         "combines_ele_names": combines_ele_names
     }

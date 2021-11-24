@@ -74,9 +74,23 @@ class Lapel(models.Model):
     def __str__(self):
         return f"{self.title}"
 
-class Pocket(models.Model):
+class LapelStitch(models.Model):
     title = models.CharField(max_length = 100, verbose_name = "Title")
-    img = models.FileField(upload_to = 'pockets/', null = True, verbose_name = "Picture")
+    img = models.FileField(upload_to = 'lapel-stitches/', null = True, verbose_name = "Picture")
+
+    def __str__(self):
+        return f"{self.title}"
+
+class PocketFlap(models.Model):
+    title = models.CharField(max_length = 100, verbose_name = "Title")
+    img = models.FileField(upload_to = 'pocket-flaps/', null = True, verbose_name = "Picture")
+
+    def __str__(self):
+        return f"{self.title}"
+
+class TicketPocket(models.Model):
+    title = models.CharField(max_length = 100, verbose_name = "Title")
+    img = models.FileField(upload_to = 'ticket-pockets/', null = True, verbose_name = "Picture")
 
     def __str__(self):
         return f"{self.title}"
@@ -88,9 +102,30 @@ class Vent(models.Model):
     def __str__(self):
         return f"{self.title}"
 
-class Contrast(models.Model):
+class StitchingThread(models.Model):
     title = models.CharField(max_length = 100, verbose_name = "Title")
-    img = models.FileField(upload_to = 'contrasts/', null = True, verbose_name = "Picture")
+    img = models.FileField(upload_to = 'stitching-threads/', null = True, verbose_name = "Picture")
+
+    def __str__(self):
+        return f"{self.title}"
+
+class SleeveButtonContrast(models.Model):
+    title = models.CharField(max_length = 100, verbose_name = "Title")
+    img = models.FileField(upload_to = 'sleeve-buttons-contrasts/', null = True, verbose_name = "Picture")
+
+    def __str__(self):
+        return f"{self.title}"
+
+class SleeveButtonThread(models.Model):
+    title = models.CharField(max_length = 100, verbose_name = "Title")
+    img = models.FileField(upload_to = 'sleeve-buttons-threads/', null = True, verbose_name = "Picture")
+
+    def __str__(self):
+        return f"{self.title}"
+
+class NeckFeltContrast(models.Model):
+    title = models.CharField(max_length = 100, verbose_name = "Title")
+    img = models.FileField(upload_to = 'neck-felt-contrasts/', null = True, verbose_name = "Picture")
 
     def __str__(self):
         return f"{self.title}"
@@ -109,9 +144,16 @@ class TrouserButtoning(models.Model):
     def __str__(self):
         return f"{self.title}"
 
-class TrouserBackPocket(models.Model):
+class TrouserBackPocketPlacement(models.Model):
     title = models.CharField(max_length = 100, verbose_name = "Title")
-    img = models.FileField(upload_to = 'trouser-back-pockets/', null = True, verbose_name = "Picture")
+    img = models.FileField(upload_to = 'trouser-back-pocket-placements/', null = True, verbose_name = "Picture")
+
+    def __str__(self):
+        return f"{self.title}"
+
+class TrouserBackPocketDesign(models.Model):
+    title = models.CharField(max_length = 100, verbose_name = "Title")
+    img = models.FileField(upload_to = 'trouser-back-pocket-designs/', null = True, verbose_name = "Picture")
 
     def __str__(self):
         return f"{self.title}"
@@ -129,12 +171,18 @@ BUTTONS = []
 BUTTON_HOLE_THREADS = []
 BUTTONINGS = []
 LAPELS = []
-POCKETS = []
+LAPEL_STITCHES = []
+POCKET_FLAPS = []
+TICKET_POCKETS = []
 VENTS = []
-CONTRASTS = []
+STITCHING_THREADS = []
+SLEEVE_BUTTONS_CONTRASTS = []
+SLEEVE_BUTTONS_THREADS = []
+NECK_FELT_CONTRASTS = []
 TROUSER_POCKETS = []
 TROUSER_BUTTONINGS = []
-TROUSER_BACK_POCKETS = []
+TROUSER_BACK_POCKET_PLACEMENTS = []
+TROUSER_BACK_POCKET_DESIGNS = []
 TROUSER_TURN_UPS = []
 
 for item in Fabric.objects.all():
@@ -167,20 +215,45 @@ for item in Lapel.objects.all():
 
 LAPELS = tuple(LAPELS)
 
-for item in Pocket.objects.all():
-    POCKETS.append((item.title.lower(), item.title))
+for item in LapelStitch.objects.all():
+    LAPEL_STITCHES.append((item.title.lower(), item.title))
 
-POCKETS = tuple(POCKETS)
+LAPEL_STITCHES = tuple(LAPEL_STITCHES)
+
+for item in PocketFlap.objects.all():
+    POCKET_FLAPS.append((item.title.lower(), item.title))
+
+POCKET_FLAPS = tuple(POCKET_FLAPS)
+
+for item in TicketPocket.objects.all():
+    TICKET_POCKETS.append((item.title.lower(), item.title))
+
+TICKET_POCKETS = tuple(TICKET_POCKETS)
 
 for item in Vent.objects.all():
     VENTS.append((item.title.lower(), item.title))
 
 VENTS = tuple(VENTS)
 
-for item in Contrast.objects.all():
-    CONTRASTS.append((item.title.lower(), item.title))
+for item in StitchingThread.objects.all():
+    STITCHING_THREADS.append((item.title.lower(), item.title))
 
-CONTRASTS = tuple(CONTRASTS)
+STITCHING_THREADS = tuple(STITCHING_THREADS)
+
+for item in SleeveButtonContrast.objects.all():
+    SLEEVE_BUTTONS_CONTRASTS.append((item.title.lower(), item.title))
+
+SLEEVE_BUTTONS_CONTRASTS = tuple(SLEEVE_BUTTONS_CONTRASTS)
+
+for item in SleeveButtonThread.objects.all():
+    SLEEVE_BUTTONS_THREADS.append((item.title.lower(), item.title))
+
+SLEEVE_BUTTONS_THREADS = tuple(SLEEVE_BUTTONS_THREADS)
+
+for item in NeckFeltContrast.objects.all():
+    NECK_FELT_CONTRASTS.append((item.title.lower(), item.title))
+
+NECK_FELT_CONTRASTS = tuple(NECK_FELT_CONTRASTS)
 
 for item in TrouserPocket.objects.all():
     TROUSER_POCKETS.append((item.title.lower(), item.title))
@@ -192,10 +265,15 @@ for item in TrouserButtoning.objects.all():
 
 TROUSER_BUTTONINGS = tuple(TROUSER_BUTTONINGS)
 
-for item in TrouserBackPocket.objects.all():
-    TROUSER_BACK_POCKETS.append((item.title.lower(), item.title))
+for item in TrouserBackPocketPlacement.objects.all():
+    TROUSER_BACK_POCKET_PLACEMENTS.append((item.title.lower(), item.title))
 
-TROUSER_BACK_POCKETS = tuple(TROUSER_BACK_POCKETS)
+TROUSER_BACK_POCKET_PLACEMENTS = tuple(TROUSER_BACK_POCKET_PLACEMENTS)
+
+for item in TrouserBackPocketDesign.objects.all():
+    TROUSER_BACK_POCKET_DESIGNS.append((item.title.lower(), item.title))
+
+TROUSER_BACK_POCKET_DESIGNS = tuple(TROUSER_BACK_POCKET_DESIGNS)
 
 for item in TrouserTurnUp.objects.all():
     TROUSER_TURN_UPS.append((item.title.lower(), item.title))
@@ -219,21 +297,34 @@ class TwoPieceSuit(models.Model):
         choices = BUTTONINGS, null = True)
     lapel = models.CharField(max_length = 100, choices = LAPELS, \
         null = True)
-    pockets = models.CharField(max_length = 100, choices = POCKETS, \
-        null = True)
+    lapel_stitch = models.CharField(max_length = 100, choices = LAPEL_STITCHES, \
+        null = True, verbose_name="Lapel Sticth")
+    pocket_flap = models.CharField(max_length = 100, choices = POCKET_FLAPS, \
+        null = True, verbose_name="Pocket Flap")
+    ticket_pocket = models.CharField(max_length = 100, choices = TICKET_POCKETS, \
+        null = True, verbose_name="Ticket Pocket")
     vent = models.CharField(max_length = 100, choices = VENTS, \
         null = True)
-    contrasts = models.CharField(max_length = 100, choices = CONTRASTS, \
+    stitching_thread = models.CharField(max_length = 100, choices = STITCHING_THREADS, \
         null = True)
+    sleeve_buttons_contrast = models.CharField(max_length = 100, choices = SLEEVE_BUTTONS_CONTRASTS, \
+        null = True, verbose_name="Sleeve Buttons Contrast")
+    sleeve_buttons_thread = models.CharField(max_length = 100, choices = SLEEVE_BUTTONS_THREADS, \
+        null = True, verbose_name="Sleeve Buttons Thread")
+    neck_felt_contrast = models.CharField(max_length = 100, choices = NECK_FELT_CONTRASTS, \
+        null = True, verbose_name="Neck Felt Contrast")
     trouser_pockets = models.CharField(max_length = 100, \
         choices = TROUSER_POCKETS, null = True, \
             verbose_name = "Trouser Pockets")
     trouser_buttoning = models.CharField(max_length = 100, \
         choices = TROUSER_BUTTONINGS, null = True, \
             verbose_name = "Trouser Buttoning")
-    trouser_back_pocket = models.CharField(max_length = 100, \
-        choices = TROUSER_BACK_POCKETS, null = True, \
-            verbose_name = "Trouser Back Pocket")
+    trouser_back_pocket_placement = models.CharField(max_length = 100, \
+        choices = TROUSER_BACK_POCKET_PLACEMENTS, null = True, \
+            verbose_name = "Trouser Back Pocket Placement")
+    trouser_back_pocket_design = models.CharField(max_length = 100, \
+        choices = TROUSER_BACK_POCKET_DESIGNS, null = True, \
+            verbose_name = "Trouser Back Pocket Design")
     trouser_turn_up = models.CharField(max_length = 100, \
         choices = TROUSER_TURN_UPS, null = True, \
             verbose_name = "Trouser Turn Up")
@@ -243,9 +334,13 @@ class TwoPieceSuit(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.fabric + '-' + self.lining + '-' + self.buttons + '-' + \
             self.button_hole_thread + '-' + self.buttoning + '-' + self.lapel + '-' + \
-                self.pockets + '-' + self.vent + '-' + self.contrasts + '-' + \
-                    self.trouser_pockets + '-' + self.trouser_buttoning + '-' + \
-                        self.trouser_back_pocket + '-' + self.trouser_turn_up)
+                self.lapel_stitch + '-' + self.pocket_flap + '-' + self.ticket_pocket + \
+                    '-' + self.vent + '-' + self.stitching_thread + '-' +  \
+                        self.sleeve_buttons_contrast + '-' +  self.sleeve_buttons_thread + \
+                            '-' + self.neck_felt_contrast + '-' + self.trouser_pockets + \
+                                '-' + self.trouser_buttoning + '-' + \
+                        self.trouser_back_pocket_placement + '-' + \
+                            self.trouser_back_pocket_design + '-' +  self.trouser_turn_up)
         super().save(*args, **kwargs)
 
     def __str__(self):
