@@ -8,6 +8,7 @@ from .models import TwoPieceSuitSideBarElement, TwoPieceSuit, \
                     TrouserBackPocketPlacement, TrouserBackPocketDesign, \
                         TrouserTurnUp
 from json import dumps
+from django.http import JsonResponse
 from .forms import UserLoginForm, UserRegistrationForm
 
 # Create your views here.
@@ -35,6 +36,19 @@ def index(request):
     trouser_back_pocket_placements    = TrouserBackPocketPlacement.objects.all()
     trouser_back_pocket_designs       = TrouserBackPocketDesign.objects.all()
     trouser_turn_ups                  = TrouserTurnUp.objects.all()
+    
+
+    if request.is_ajax():
+        data = request.GET.get("data")
+        # FilteredProduct = two_piece_suits_prods.filter(Fabric=="Havanna, black")
+        print(data)
+        # return JsonResponse(list(FilteredProduct), safe=False)
+        # print(text)
+        # data = Test.objects.all().values("title")
+        # res = Test.objects.filter(title=text).values("title", "image")
+        # print(res)
+        # return JsonResponse(list(res), safe=False)
+
 
     combines_ele_names = []
     for item in two_piece_suit_side_bar_elements:
@@ -49,6 +63,8 @@ def index(request):
         
     
     #print(combines_ele_names)
+
+
 
     context = {
         "two_piece_suit_sidebar_first_ele": two_piece_suit_side_bar_elements[0],

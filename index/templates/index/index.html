@@ -6,7 +6,7 @@
 <div class="dress-showcase">
     <div class="dress-showcase-sidebar">
         <ul class="dress-showcase-sidebar__ul">
-            <div id="menu">                
+            <div id="menu">
                 <!-- <li class="active">
                     <a href="#suit-{{ two_piece_suit_sidebar_first_ele.title }}" class="btn btn-big">
                         <div class="dress-showcase-sidebar__ul--img-section">
@@ -18,7 +18,7 @@
                         </div>
                     </a>
                 </li> -->
-                
+
                 {% for element in combines_ele_names %}
                 <li class="">
                     <a href="#two-piece-suit-{{ element|index:2 }}" class="btn btn-big">
@@ -30,11 +30,11 @@
                     </a>
                 </li>
                 {% endfor %}
-            </div>            
+            </div>
         </ul>
     </div>
 
-    <div class="dress-showcase-preview-dress" 
+    <div class="dress-showcase-preview-dress"
         style="background-image: url(https://rnd.tailorstore.com/as1/fHw5MHwjRkZGRkZGfHdlYnA,/eNqd0lkOgyAQBuC79LkpSlvTu5SGjDgqLYthuX9p1ZjYJcHwBBk-_gxz3Tk0DTpGfJSBkQ60BkbaqBQXoHnBSJm2UDspGLmDeGCq/ojwdHqsLPQym2-1XhrFOg_pAlDTSdAtSTs7pTKscZw6jYED1NtKi-Xlmx8sG-WCnUMkqtluiRx8WbEOToEaVc6GOIVjDe6vwFcMH/HLucGtLmPj5aa4bSYkOg0DuE5ouVKn6J_4cvOBs9Oj-Nzfqnbk_jG_Zz.webp)">
         <div class="dress-showcase-preview-dress-navbar">
             <img src="{% static 'images/iffi.jpeg' %}" />
@@ -43,7 +43,7 @@
         <div class="dress-showcase-preview-dress-button-section">
             <a href="{% url 'body-measurements' %}">
                 <button class="dress-showcase-preview-dress-button-section__btn-continue">Continue <i
-                    class="fas fa-arrow-right"></i></button>
+                        class="fas fa-arrow-right"></i></button>
             </a>
             <button class="dress-showcase-preview-dress-button-section__btn-reset"> <i class="fas fa-undo"></i>
                 Reset</button>
@@ -68,23 +68,23 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="suit-product-menu">
                     {% for suit_product in suit_products %}
-                        {% if suit_product == suit_products|index:0 %}
-                            <a href="http://localhost:8000" style="text-decoration: none;">
-                                <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                    <div class="modal-body-item-list__card--symbol"></div>
-                                    <img class="modal-body-item-list__card--thumb" src="{{ suit_product.img.url }}" />
-                                    <div class="modal-body-item-list__card--mid">{{ suit_product.title }}</div>
-                                    <div class="modal-body-item-list__card--price"></div>
-                                </div>
-                            </a>
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb" src="{{ suit_product.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ suit_product.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if suit_product == suit_products|index:0 %}
+                    <a href="#" style="text-decoration: none;">
+                        <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                            <div class="modal-body-item-list__card--symbol"></div>
+                            <img class="modal-body-item-list__card--thumb" src="{{ suit_product.img.url }}" />
+                            <div class="modal-body-item-list__card--mid">{{ suit_product.title }}</div>
+                            <div class="modal-body-item-list__card--price"></div>
+                        </div>
+                    </a>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ suit_product.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ suit_product.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -106,23 +106,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-fabric-menu">
                     {% for fabric in fabrics %}
-                        {% if fabric == fabrics|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ fabric.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ fabric.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ fabric.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ fabric.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if fabric == fabrics|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ fabric.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ fabric.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ fabric.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ fabric.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -144,23 +142,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-lining-menu">
                     {% for lining in linings %}
-                        {% if lining == linings|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ lining.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ lining.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ lining.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ lining.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if lining == linings|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ lining.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ lining.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ lining.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ lining.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -182,23 +178,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-buttons-menu">
                     {% for button in buttons %}
-                        {% if button == buttons|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ button.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ button.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ button.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ button.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if button == buttons|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ button.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ button.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ button.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ button.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -220,23 +214,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-button-hole-thread-menu">
                     {% for button_hole_thread in button_hole_threads %}
-                        {% if button_hole_thread == button_hole_threads|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ button_hole_thread.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ button_hole_thread.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ button_hole_thread.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ button_hole_thread.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if button_hole_thread == button_hole_threads|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ button_hole_thread.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ button_hole_thread.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ button_hole_thread.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ button_hole_thread.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -258,23 +250,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-buttoning-menu">
                     {% for buttoning in buttonings %}
-                        {% if buttoning == buttonings|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ buttoning.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ buttoning.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ buttoning.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ buttoning.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if buttoning == buttonings|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ buttoning.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ buttoning.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ buttoning.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ buttoning.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -296,23 +286,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-lapel-menu">
                     {% for lapel in lapels %}
-                        {% if lapel == lapels|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ lapel.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ lapel.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ lapel.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ lapel.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if lapel == lapels|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ lapel.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ lapel.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ lapel.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ lapel.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -334,23 +322,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-lapel-stitch-menu">
                     {% for lapel_stitch in lapel_stitches %}
-                        {% if lapel_stitch == lapel_stitches|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ lapel_stitch.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ lapel_stitch.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ lapel_stitch.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ lapel_stitch.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if lapel_stitch == lapel_stitches|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ lapel_stitch.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ lapel_stitch.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ lapel_stitch.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ lapel_stitch.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -372,23 +358,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-pocket-flap-menu">
                     {% for pocket_flap in pocket_flaps %}
-                        {% if pocket_flap == pocket_flaps|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ pocket_flap.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ pocket_flap.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ pocket_flap.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ pocket_flap.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if pocket_flap == pocket_flaps|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ pocket_flap.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ pocket_flap.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ pocket_flap.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ pocket_flap.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -410,23 +394,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-ticket-pocket-menu">
                     {% for ticket_pocket in ticket_pockets %}
-                        {% if ticket_pocket == ticket_pockets|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ ticket_pocket.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ ticket_pocket.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ ticket_pocket.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ ticket_pocket.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if ticket_pocket == ticket_pockets|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ ticket_pocket.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ ticket_pocket.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ ticket_pocket.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ ticket_pocket.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -448,23 +430,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-vent-menu">
                     {% for vent in vents %}
-                        {% if vent == vents|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ vent.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ vent.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ vent.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ vent.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if vent == vents|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ vent.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ vent.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ vent.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ vent.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -486,23 +466,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-stitching-thread-menu">
                     {% for stitching_thread in stitching_threads %}
-                        {% if stitching_thread == stitching_threads|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ stitching_thread.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ stitching_thread.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ stitching_thread.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ stitching_thread.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if stitching_thread == stitching_threads|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ stitching_thread.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ stitching_thread.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ stitching_thread.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ stitching_thread.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -524,23 +502,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-sleeve-buttons-contrast-menu">
                     {% for sleeve_buttons_contrast in sleeve_buttons_contrasts %}
-                        {% if sleeve_buttons_contrast == sleeve_buttons_contrasts|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ sleeve_buttons_contrast.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ sleeve_buttons_contrast.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ sleeve_buttons_contrast.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ sleeve_buttons_contrast.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if sleeve_buttons_contrast == sleeve_buttons_contrasts|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ sleeve_buttons_contrast.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ sleeve_buttons_contrast.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ sleeve_buttons_contrast.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ sleeve_buttons_contrast.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -562,23 +538,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-sleeve-buttons-thread-menu">
                     {% for sleeve_buttons_thread in sleeve_buttons_threads %}
-                        {% if sleeve_buttons_thread == sleeve_buttons_threads|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ sleeve_buttons_thread.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ sleeve_buttons_thread.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ sleeve_buttons_thread.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ sleeve_buttons_thread.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if sleeve_buttons_thread == sleeve_buttons_threads|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ sleeve_buttons_thread.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ sleeve_buttons_thread.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ sleeve_buttons_thread.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ sleeve_buttons_thread.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -600,23 +574,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-neck-felt-contrast-menu">
                     {% for neck_felt_contrast in neck_felt_contrasts %}
-                        {% if neck_felt_contrast == neck_felt_contrasts|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ neck_felt_contrast.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ neck_felt_contrast.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ neck_felt_contrast.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ neck_felt_contrast.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if neck_felt_contrast == neck_felt_contrasts|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ neck_felt_contrast.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ neck_felt_contrast.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ neck_felt_contrast.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ neck_felt_contrast.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -638,23 +610,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-neck-trouser-pockets-menu">
                     {% for trouser_pocket in trouser_pockets %}
-                        {% if trouser_pocket == trouser_pockets|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ trouser_pocket.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ trouser_pocket.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ trouser_pocket.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ trouser_pocket.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if trouser_pocket == trouser_pockets|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ trouser_pocket.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ trouser_pocket.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ trouser_pocket.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ trouser_pocket.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -676,23 +646,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-neck-trouser-buttoning-menu">
                     {% for trouser_buttoning in trouser_buttonings %}
-                        {% if trouser_buttoning == trouser_buttonings|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ trouser_buttoning.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ trouser_buttoning.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ trouser_buttoning.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ trouser_buttoning.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if trouser_buttoning == trouser_buttonings|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ trouser_buttoning.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ trouser_buttoning.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ trouser_buttoning.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ trouser_buttoning.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -714,23 +682,23 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-neck-trouser-back-pocket-placement-menu">
                     {% for trouser_back_pocket_placement in trouser_back_pocket_placements %}
-                        {% if trouser_back_pocket_placement == trouser_back_pocket_placements|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ trouser_back_pocket_placement.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ trouser_back_pocket_placement.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ trouser_back_pocket_placement.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ trouser_back_pocket_placement.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if trouser_back_pocket_placement == trouser_back_pocket_placements|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb"
+                            src="{{ trouser_back_pocket_placement.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ trouser_back_pocket_placement.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb"
+                            src="{{ trouser_back_pocket_placement.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ trouser_back_pocket_placement.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -752,23 +720,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-neck-trouser-back-pocket-design-menu">
                     {% for trouser_back_pocket_design in trouser_back_pocket_designs %}
-                        {% if trouser_back_pocket_design == trouser_back_pocket_designs|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ trouser_back_pocket_design.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ trouser_back_pocket_design.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ trouser_back_pocket_design.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ trouser_back_pocket_design.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if trouser_back_pocket_design == trouser_back_pocket_designs|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ trouser_back_pocket_design.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ trouser_back_pocket_design.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ trouser_back_pocket_design.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ trouser_back_pocket_design.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -790,23 +756,21 @@
             <div class="modal-body">
                 <div class="modal-body-item-list" id="two-piece-suit-neck-trouser-turn-up-menu">
                     {% for trouser_turn_up in trouser_turn_ups %}
-                        {% if trouser_turn_up == trouser_turn_ups|index:0 %}
-                            <div class="modal-body-item-list__card modal-body-item-list__card-active">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ trouser_turn_up.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ trouser_turn_up.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>                            
-                        {% else %}
-                            <div class="modal-body-item-list__card">
-                                <div class="modal-body-item-list__card--symbol"></div>
-                                <img class="modal-body-item-list__card--thumb"
-                                    src="{{ trouser_turn_up.img.url }}" />
-                                <div class="modal-body-item-list__card--mid">{{ trouser_turn_up.title }}</div>
-                                <div class="modal-body-item-list__card--price"></div>
-                            </div>
-                        {% endif %}
+                    {% if trouser_turn_up == trouser_turn_ups|index:0 %}
+                    <div class="modal-body-item-list__card modal-body-item-list__card-active">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ trouser_turn_up.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ trouser_turn_up.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% else %}
+                    <div class="modal-body-item-list__card">
+                        <div class="modal-body-item-list__card--symbol"></div>
+                        <img class="modal-body-item-list__card--thumb" src="{{ trouser_turn_up.img.url }}" />
+                        <div class="modal-body-item-list__card--mid">{{ trouser_turn_up.title }}</div>
+                        <div class="modal-body-item-list__card--price"></div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -817,46 +781,64 @@
     </div>
     <!-- /Two Piece Suit Trouser Turn Up -->
 
-<script>
-    let currentParentLink = "";
-    let activeModalId = "";
+    <script>
+        let currentParentLink = "";
+        let activeModalId = "";
 
-    $(document).ready(function () {
+        $(document).ready(function () {
 
-        $("#menu li").click(function () {
+            $("#menu li").click(function () {
+                $('#menu li').removeClass('active');
+                $(this).addClass('active');
+                let currentDiv = $(this)
+                activeModalId = currentDiv[0].firstElementChild.hash;
+            });
+            $(activeModalId + " .modal-body-item-list .modal-body-item-list__card").click(async function () {
+                $(activeModalId + " .modal-body-item-list .modal-body-item-list__card").removeClass('modal-body-item-list__card-active');
+                $(this).addClass('modal-body-item-list__card-active');
+
+                let active_product = $("#two-piece-suit-Products .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
+
+                let active_suit_Fabric = $("#two-piece-suit-Fabric .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
+                let active_suit_Buttons = $("#two-piece-suit-Buttons .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
+                let active_suit_Button_hole_thread = $("#two-piece-suit-Button-hole-thread .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
+                let active_suit_Buttoning = $("#two-piece-suit-Buttoning .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
+                let active_suit_lapel = $("#two-piece-suit-Lapel .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
+                // let active_suit_packets = $("#two-piece-suit-Pocket .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
+                // let active_suit_contrasts = $("#two-piece-suit-Contrasts .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
+
+                debugger
+
+                let resss = await getDataFromDatabase({
+                    suit_Fabric: active_suit_Fabric,
+                    suit_Buttons: active_suit_Buttons,
+                    suit_Button_hole_thread: active_suit_Button_hole_thread,
+                    suit_Buttoning: active_suit_Buttoning,
+                    suit_lapel: active_suit_lapel,
+                });
+
+                $(".dress-showcase-preview-dress").css('background-image', 'url(https://rnd.tailorstore.com/as1/fHw5MHwjRkZGRkZGfHdlYnA,/eNqt0sEOgjAMBuB38WwsUyL6LNYsBTZYhE7HOPj2ThSM3hwcl6zf_rU9rZziUjmErjbOI7B1LTUI2z1CS4ZlQa1MEDTlzhQIOXUK/QchEHuUOIU236ebK1Wr9L3S3lyc0h7C9V05q6rxiw9UiWtFrHe7MgQzzMtA7kW0aCkXZApnmUL52ikqEFyJr26huoHS8Nc1u5EQU/l_feWx6jDaGEEHHG9zr9zfx06XV89kmKQ3gk2vt0aiJFJNlSWIZbb8Jns6Hy_ADTBGUO.webp)');
+            });
+        });
+
+
+        function getDataFromDatabase(val) {
             debugger
-            $('#menu li').removeClass('active');
-            $(this).addClass('active');
-            let currentDiv = $(this)
-            activeModalId = currentDiv[0].firstElementChild.hash;
-        });
-        $(activeModalId + " .modal-body-item-list .modal-body-item-list__card").click(async function () {
-            $(activeModalId + " .modal-body-item-list .modal-body-item-list__card").removeClass('modal-body-item-list__card-active');
-            $(this).addClass('modal-body-item-list__card-active');
-            let resss = await getDataFromDatabase("a");
-
-            $(".dress-showcase-preview-dress").css('background-image', 'url(https://rnd.tailorstore.com/as1/fHw5MHwjRkZGRkZGfHdlYnA,/eNqt0sEOgjAMBuB38WwsUyL6LNYsBTZYhE7HOPj2ThSM3hwcl6zf_rU9rZziUjmErjbOI7B1LTUI2z1CS4ZlQa1MEDTlzhQIOXUK/QchEHuUOIU236ebK1Wr9L3S3lyc0h7C9V05q6rxiw9UiWtFrHe7MgQzzMtA7kW0aCkXZApnmUL52ikqEFyJr26huoHS8Nc1u5EQU/l_feWx6jDaGEEHHG9zr9zfx06XV89kmKQ3gk2vt0aiJFJNlSWIZbb8Jns6Hy_ADTBGUO.webp)');
-        });
-    });
-
-
-    function getDataFromDatabase(val) {
-        debugger
-        $.ajax({
-            url: (""),
-            type: "GET",
-            data: {
-                button_text: "btn_Text"
-            },
-            success: function (resp) {
-                return resp;
-            },
-            error: function (resp) {
-                console.log("something went wrong");
-                return resp
-            }
-        });
-    }
+            $.ajax({
+                url: (""),
+                type: "GET",
+                data: {
+                    data: val
+                },
+                success: function (resp) {
+                    return resp;
+                },
+                error: function (resp) {
+                    console.log("something went wrong");
+                    return resp
+                }
+            });
+        }
 
 
 
@@ -953,4 +935,4 @@
     //         btnTypeImage.style.backgroundImage = dat[i]
     //     });
     // }
-</script>{% endblock content %}
+    </script>{% endblock content %}
