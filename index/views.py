@@ -9,6 +9,7 @@ from .models import TwoPieceSuitSideBarElement, TwoPieceSuit, \
                         TrouserTurnUp
 from cart.models import Cart
 from json import dumps
+from django.http import JsonResponse
 from .forms import UserLoginForm, UserRegistrationForm
 
 # Create your views here.
@@ -36,6 +37,19 @@ def index(request):
     trouser_back_pocket_placements    = TrouserBackPocketPlacement.objects.all()
     trouser_back_pocket_designs       = TrouserBackPocketDesign.objects.all()
     trouser_turn_ups                  = TrouserTurnUp.objects.all()
+    
+
+    if request.is_ajax():
+        data = request.GET.get("data")
+        # FilteredProduct = two_piece_suits_prods.filter(Fabric=="Havanna, black")
+        print(data)
+        # return JsonResponse(list(FilteredProduct), safe=False)
+        # print(text)
+        # data = Test.objects.all().values("title")
+        # res = Test.objects.filter(title=text).values("title", "image")
+        # print(res)
+        # return JsonResponse(list(res), safe=False)
+
 
     cart_obj, new_obj = Cart.objects.new_or_get(request)
 
@@ -52,6 +66,8 @@ def index(request):
         
     
     #print(combines_ele_names)
+
+
 
     context = {
         "cart": cart_obj,
