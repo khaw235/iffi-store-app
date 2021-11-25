@@ -7,6 +7,7 @@ from .models import TwoPieceSuitSideBarElement, TwoPieceSuit, \
                 NeckFeltContrast, TrouserPocket, TrouserButtoning, \
                     TrouserBackPocketPlacement, TrouserBackPocketDesign, \
                         TrouserTurnUp
+from cart.models import Cart
 from json import dumps
 from .forms import UserLoginForm, UserRegistrationForm
 
@@ -36,6 +37,8 @@ def index(request):
     trouser_back_pocket_designs       = TrouserBackPocketDesign.objects.all()
     trouser_turn_ups                  = TrouserTurnUp.objects.all()
 
+    cart_obj, new_obj = Cart.objects.new_or_get(request)
+
     combines_ele_names = []
     for item in two_piece_suit_side_bar_elements:
         temp_title = str(item.title)
@@ -51,6 +54,7 @@ def index(request):
     #print(combines_ele_names)
 
     context = {
+        "cart": cart_obj,
         "two_piece_suit_sidebar_first_ele": two_piece_suit_side_bar_elements[0],
         "two_piece_suit_sidebar_elements": two_piece_suit_side_bar_elements[1:],
         "two_piece_suits_prods": two_piece_suits_prods,
