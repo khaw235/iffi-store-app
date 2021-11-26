@@ -824,12 +824,16 @@
 
         function getDataFromDatabase(val) {
             debugger
+            var serializedData = JSON.stringify([val]);
+            // var serializedData = JSON.stringify(val);
             $.ajax({
                 url: (""),
+                contentType: 'application/json',
                 type: "GET",
                 data: {
-                    data: val
+                    data: serializedData, 'csrfmiddlewaretoken': '{{ csrf_token }}',
                 },
+                dataType: 'json',
                 success: function (resp) {
                     return resp;
                 },
