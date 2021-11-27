@@ -11,9 +11,12 @@ from cart.models import Cart
 from json import dumps
 from django.http import JsonResponse
 from .forms import UserLoginForm, UserRegistrationForm
+from django.views.decorators.csrf import csrf_exempt,csrf_protect #Add this
 
+
+import json
 # Create your views here.
-
+@csrf_exempt
 def index(request):
     suit_products                     = SuitProduct.objects.all()
     two_piece_suit_side_bar_elements  = TwoPieceSuitSideBarElement.objects.all()
@@ -39,12 +42,13 @@ def index(request):
     trouser_turn_ups                  = TrouserTurnUp.objects.all()
     
 
-    if request.is_ajax():
-        data = request.GET.get("data")
+    if request.is_ajax and request.method == "GET":
+        data = request.GET.get("data",None)
         # FilteredProduct = two_piece_suits_prods.filter(Fabric=="Havanna, black")
         #data = request.GET.get("data")
         print(data)
 
+        print("assas", data)
         # return JsonResponse(list(FilteredProduct), safe=False)
         # print(text)
         # data = Test.objects.all().values("title")
