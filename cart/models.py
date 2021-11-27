@@ -50,7 +50,6 @@ def m2m_changed_cart_receiver(sender, instance, action, *args, **kwargs):
         total = 0
     
         for item in two_piece_suits:
-            item.counts = 1
             total = total + (item.price * item.counts)
 
         if instance.subtotal != total:

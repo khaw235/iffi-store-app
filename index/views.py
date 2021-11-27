@@ -42,7 +42,9 @@ def index(request):
     if request.is_ajax():
         data = request.GET.get("data")
         # FilteredProduct = two_piece_suits_prods.filter(Fabric=="Havanna, black")
+        #data = request.GET.get("data")
         print(data)
+
         # return JsonResponse(list(FilteredProduct), safe=False)
         # print(text)
         # data = Test.objects.all().values("title")
@@ -66,6 +68,7 @@ def index(request):
         
     
     #print(combines_ele_names)
+
 
 
 

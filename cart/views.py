@@ -22,6 +22,10 @@ def cart_home(request):
 def cart_update(request):
     obj = TwoPieceSuit.objects.all()[0]
     cart_obj, new_obj = Cart.objects.new_or_get(request)
-    cart_obj.two_piece_suits.add(obj)
+    
+    if obj in cart_obj.two_piece_suits.all():
+        cart_obj.two_piece_suits.remove(obj)
+    else:
+        cart_obj.two_piece_suits.add(obj)
 
     return  redirect("/")

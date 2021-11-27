@@ -330,7 +330,7 @@ class TwoPieceSuit(models.Model):
             verbose_name = "Trouser Turn Up")
     price = models.DecimalField(decimal_places = 2, max_digits = 20, default = 99.99)
     slug = models.SlugField(max_length=100, null = True, blank = True, db_index = True)
-    counts = models.IntegerField(editable=False, default=0, null=False)
+    counts = models.IntegerField(editable=False, default=1, null=False)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.fabric + '-' + self.lining + '-' + self.buttons + '-' + \
