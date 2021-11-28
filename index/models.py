@@ -292,7 +292,7 @@ class TwoPieceSuit(models.Model):
         null = True)
     button_hole_thread = models.CharField(max_length = 100, \
         choices = BUTTON_HOLE_THREADS, null = True, \
-            verbose_name = "Button Hole Threads")
+            verbose_name = "Button Hole Thread")
     buttoning = models.CharField(max_length = 100, \
         choices = BUTTONINGS, null = True)
     lapel = models.CharField(max_length = 100, choices = LAPELS, \
@@ -329,7 +329,7 @@ class TwoPieceSuit(models.Model):
         choices = TROUSER_TURN_UPS, null = True, \
             verbose_name = "Trouser Turn Up")
     price = models.DecimalField(decimal_places = 2, max_digits = 20, default = 99.99)
-    slug = models.SlugField(max_length=100, null = True, blank = True, db_index = True)
+    slug = models.SlugField(max_length=1000, null = True, blank = True, db_index = True)
     counts = models.IntegerField(editable=False, default=1, null=False)
 
     def save(self, *args, **kwargs):

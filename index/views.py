@@ -46,9 +46,8 @@ def index(request):
         data = request.GET.get("data",None)
         # FilteredProduct = two_piece_suits_prods.filter(Fabric=="Havanna, black")
         #data = request.GET.get("data")
-        print(data)
-
-        print("assas", data)
+        #print(data)
+        #print("assas", data)
         # return JsonResponse(list(FilteredProduct), safe=False)
         # print(text)
         # data = Test.objects.all().values("title")
@@ -58,6 +57,39 @@ def index(request):
 
 
     cart_obj, new_obj = Cart.objects.new_or_get(request)
+
+    all_details = []
+    details = {}
+
+    for instance in two_piece_suits_prods:
+        details["title"] = instance.title
+        details["image"] = instance.img.url
+        details["fabric"] = instance.fabric
+        details["lining"] = instance.lining
+        details["buttons"] = instance.buttons
+        details["button_hole_thread"] = instance.button_hole_thread
+        details["buttoning"] = instance.buttoning
+        details["lapel"] = instance.lapel
+        details["lapel_stitch"] = instance.lapel_stitch
+        details["pocket_flap"] = instance.pocket_flap
+        details["ticket_pocket"] = instance.ticket_pocket
+        details["vent"] = instance.vent
+        details["stitching_thread"] = instance.stitching_thread
+        details["sleeve_buttons_contrast"] = instance.sleeve_buttons_contrast
+        details["sleeve_buttons_thread"] = instance.sleeve_buttons_thread
+        details["neck_felt_contrast"] = instance.neck_felt_contrast
+        details["trouser_pockets"] = instance.trouser_pockets
+        details["trouser_buttoning"] = instance.trouser_buttoning
+        details["trouser_back_pocket_placement"] = instance.trouser_back_pocket_placement
+        details["trouser_back_pocket_design"] = instance.trouser_back_pocket_design
+        details["trouser_turn_up"] = instance.trouser_turn_up
+        details["price"] = float(instance.price)
+
+        all_details.append(details)
+
+        details = {}
+
+    #print(all_details[0], '\n\n\n', all_details[-1])
 
     combines_ele_names = []
     for item in two_piece_suit_side_bar_elements:
@@ -101,7 +133,8 @@ def index(request):
         "trouser_back_pocket_placements": trouser_back_pocket_placements,
         "trouser_back_pocket_designs": trouser_back_pocket_designs,
         "trouser_turn_ups": trouser_turn_ups,
-        "combines_ele_names": combines_ele_names
+        "combines_ele_names": combines_ele_names,
+        "all_details": all_details
     }
 
     return render(request, "index/index.html", context)
