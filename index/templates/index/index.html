@@ -788,61 +788,7 @@
 
         $(document).ready(async function () {
 
-            let data = await getAllDataFromDatabase();
-            debugger
-            $("#menu li").click(function () {
-                $('#menu li').removeClass('active');
-                $(this).addClass('active');
-                let currentDiv = $(this)
-                activeModalId = currentDiv[0].firstElementChild.hash;
-            });
-            $(activeModalId + " .modal-body-item-list .modal-body-item-list__card").click(async function () {
-                var background = $('.dress-showcase-preview-dress').css('background-image')
-                $(activeModalId + " .modal-body-item-list .modal-body-item-list__card").removeClass('modal-body-item-list__card-active');
-                $(this).addClass('modal-body-item-list__card-active');
-
-                let active_product = $("#two-piece-suit-Products .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
-
-                let active_suit_Fabric = $("#two-piece-suit-Fabric .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
-                let active_suit_Buttons = $("#two-piece-suit-Buttons .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
-                let active_suit_Button_hole_thread = $("#two-piece-suit-Button-hole-thread .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
-                let active_suit_Buttoning = $("#two-piece-suit-Buttoning .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
-                let active_suit_lapel = $("#two-piece-suit-Lapel .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
-                // let active_suit_packets = $("#two-piece-suit-Pocket .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
-                // let active_suit_contrasts = $("#two-piece-suit-Contrasts .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
-
-                debugger
-
-                let resss = await getDataFromDatabase({
-                    suit_Fabric: active_suit_Fabric,
-                    suit_Buttons: active_suit_Buttons,
-                    suit_Button_hole_thread: active_suit_Button_hole_thread,
-                    suit_Buttoning: active_suit_Buttoning,
-                    suit_lapel: active_suit_lapel,
-                });
-
-
-                if (active_suit_Fabric == "Havanna, black" && active_product == "Two-piece suit") {
-                    $(".dress-showcase-preview-dress").css('background-image', 'url(https://rnd.tailorstore.com/as1/fHw5MHwjRkZGRkZGfHdlYnA,/eNqd0lkOgyAQBuC79LkpSlvTu5SGjDgqLYthuX9p1ZjYJcHwBBk-_gxz3Tk0DTpGfJSBkQ60BkbaqBQXoHnBSJm2UDspGLmDeGCq/ojwdHqsLPQym2-1XhrFOg_pAlDTSdAtSTs7pTKscZw6jYED1NtKi-Xlmx8sG-WCnUMkqtluiRx8WbEOToEaVc6GOIVjDe6vwFcMH/HLucGtLmPj5aa4bSYkOg0DuE5ouVKn6J_4cvOBs9Oj-Nzfqnbk_jG_Zz.webp)');
-                }
-                else if (active_suit_Fabric == "Stockholm, brown" && active_product == "Two-piece suit") {
-                    $(".dress-showcase-preview-dress").css('background-image', 'url(https://rnd.tailorstore.com/as1/fHw5MHwjRkZGRkZGfHdlYnA,/eNqd0lkOgyAQBuC79LkpaltTz1IaMuKotCyG5f6lVWNilwTDE2T4-DPMdWdRN2gpcUF4SjpQCihpg5SMg2IZJXncQm0Fp-QO_IGx/qmDxsCjL8jDobrdfGdpYBfIDkUIL3S1IPjmn87FKceYwEgaUbyOuIj3P7DjRIBvMFCpa2XaL9-j8gm1oEtQoUy7UwXujWW8kvmI4/j2OXY0Pa1MdHa83k1WVDIN9bhOaLFSt-if-Hz1sTHFo3jc36p25PB132pw,,.webp)');
-                }
-                else if (active_suit_Fabric == "Havanna, black" && active_product == "Three-piece suit") {
-                    $(".dress-showcase-preview-dress").css('background-image', 'url(https://rnd.tailorstore.com/as1/fHw5MHwjRkZGRkZGfHdlYnA,/eNql0-EOgiAQB_B36XMLtXL2LNHYiadSCA5wvX5UOqdubuL4xGC_wf3v7geDqkBDie2Eo6SCpgFKyk5KxqFhESWp30JuBKfkCfyF/_lbCYkrOaZacWlUdjjNDadOAXCBSKKGqEYl753JN0hDnDcI6ruH7nu3K8KWpsvVPeeecVqzWEidUGQZNjPiWBTzF1QahmEP-eCM3/1EdCi_KXlF8BFRocKwpkre6j91YUbvEarRuxgFaEHGVwziVYh_8eTHZEPWX2pb2wVgJfH3FndGfR2H4450k9PnGHdUs,.webp)');
-                }
-                else if (active_suit_Fabric == "Stockholm, brown" && active_product == "Three-piece suit") {
-                    $(".dress-showcase-preview-dress").css('background-image', 'url(https://rnd.tailorstore.com/as1/fHw5MHwjRkZGRkZGfHdlYnA,/eNql0-EKgyAQB_B32ecxq22xnmUOuewqN9NQY68_txVRQZAhCKL88O6v94NBVaChxHbCUVJB0wAlZScl49CwiJLULyE3glPyBP5C/fyphsZ_SND21qjocZ4bSpgG5QKRQQlUjEvfO5XrOQpw3COu4hu99titDSVNla01555xWrNYSJ1QZBk2MOLsFXMXVBqGYQ357Izf0/R0KL8peUHwEdGhwrCmSt7qP3VhRu8RqtG7GApwg5yuCcS7AO_28w2RH1lNmX9sJaCXz9izujO4vG9p9zntTjA52RdVs,.webp)');
-                }
-                else {
-                    $(".dress-showcase-preview-dress").css('background-image', 'url(https://rnd.tailorstore.com/as1/fHw5MHwjRkZGRkZGfHdlYnA,/eNqd0lkOgyAQBuC79LkpSlvTu5SGjDgqLYthuX9p1ZjYJcHwBBk-_gxz3Tk0DTpGfJSBkQ60BkbaqBQXoHnBSJm2UDspGLmDeGCq/ojwdHqsLPQym2-1XhrFOg_pAlDTSdAtSTs7pTKscZw6jYED1NtKi-Xlmx8sG-WCnUMkqtluiRx8WbEOToEaVc6GOIVjDe6vwFcMH/HLucGtLmPj5aa4bSYkOg0DuE5ouVKn6J_4cvOBs9Oj-Nzfqnbk_jG_Zz.webp)');
-                }
-            });
-        });
-
-
-        function getAllDataFromDatabase(val) {
-            debugger
+            // get All products data
             $.ajax({
                 url: (""),
                 contentType: 'application/json',
@@ -852,18 +798,62 @@
                 },
                 dataType: 'json',
                 success: function (resp) {
-                    debugger
-                    return resp;
+
+                    completeData = resp;
                 },
                 error: function (resp) {
                     console.log("something went wrong");
-                    return resp
                 }
             });
-        }
+
+            $("#menu li").click(function () {
+                $('#menu li').removeClass('active');
+                $(this).addClass('active');
+                let currentDiv = $(this)
+                activeModalId = currentDiv[0].firstElementChild.hash;
+            });
+            $(activeModalId + " .modal-body-item-list .modal-body-item-list__card").click(
+                async function () {
+                    var background = $('.dress-showcase-preview-dress').css('background-image')
+                    $(activeModalId + " .modal-body-item-list .modal-body-item-list__card")
+                        .removeClass('modal-body-item-list__card-active');
+                    $(this).addClass('modal-body-item-list__card-active');
+
+                    let active_product = $(
+                        "#two-piece-suit-Products .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_suit_Fabric = $(
+                        "#two-piece-suit-Fabric .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+                    let active_suit_Buttons = $(
+                        "#two-piece-suit-Buttons .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+                    let active_suit_Button_hole_thread = $(
+                        "#two-piece-suit-Button-hole-thread .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+                    let active_suit_Buttoning = $(
+                        "#two-piece-suit-Buttoning .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+                    let active_suit_lapel = $(
+                        "#two-piece-suit-Lapel .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+                    // let active_suit_packets = $("#two-piece-suit-Pocket .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
+                    // let active_suit_contrasts = $("#two-piece-suit-Contrasts .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
+
+                    let resss = await filterAndSetBgImage({
+                        suit_Fabric: active_suit_Fabric,
+                        suit_Buttons: active_suit_Buttons,
+                        suit_Button_hole_thread: active_suit_Button_hole_thread,
+                        suit_Buttoning: active_suit_Buttoning,
+                        suit_lapel: active_suit_lapel,
+                    });
+                });
+        });
+
 
         function getDataFromDatabase(val) {
-            debugger
+
             var serializedData = JSON.stringify([val]);
 
             $.ajax({
@@ -871,7 +861,8 @@
                 contentType: 'application/json',
                 type: "GET",
                 data: {
-                    data: serializedData, 'csrfmiddlewaretoken': '{{ csrf_token }}',
+                    data: serializedData,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
                 },
                 dataType: 'json',
                 success: function (resp) {
@@ -884,99 +875,26 @@
             });
         }
 
+        function filterAndSetBgImage(val) {
+            const {
+                suit_Fabric,
+                suit_Buttons,
+                suit_Button_hole_thread,
+                suit_Buttoning,
+                suit_lapel
+            } = val;
 
-
-
-    // // Get the container element
-    // var productsBtnContainer = document.getElementById("sub-menu");
-
-    // // Get all buttons with class="btn" inside the container
-    // var productsBtns = productsBtnContainer.getElementsByClassName("modal-body-item-list__card");
-    // debugger
-    // // Loop through the buttons and add the active class to the current/clicked button
-    // for (var i = 0; i < productsBtns.length; i++) {
-    //     productsBtns[i].addEventListener("click", function () {
-    //         var productsCurrent = document.getElementsByClassName("modal-body-item-list__card modal-body-item-list__card-active");
-
-    //         // If there's no active class
-    //         if (productsCurrent.length > 0) {
-    //             productsCurrent[0].className = productsCurrent[0].className.replace(" modal-body-item-list__card-active", "");
-    //         }
-
-    //         // Add the active class to the current/clicked button
-    //         this.className += " modal-body-item-list__card-active";
-    //     });
-    // }
-
-
-
-    // // Get the container element
-    // var suitProductsBtnContainer = document.getElementById("suit-product-menu");
-
-    // // Get all buttons with class="btn" inside the container
-    // var suitProductsBtns = suitProductsBtnContainer.getElementsByClassName("modal-body-item-list__card");
-
-    // // Loop through the buttons and add the active class to the current/clicked button
-    // for (var i = 0; i < suitProductsBtns.length; i++) {
-    //     suitProductsBtns[i].addEventListener("click", function () {
-    //         var suitProductsCurrent = document.getElementsByClassName("modal-body-item-list__card modal-body-item-list__card-active");
-
-    //         // If there's no active class
-    //         if (suitProductsCurrent.length > 0) {
-    //             suitProductsCurrent[0].className = suitProductsCurrent[0].className.replace(" modal-body-item-list__card-active", "");
-    //         }
-
-    //         // Add the active class to the current/clicked button
-    //         this.className += " modal-body-item-list__card-active";
-    //     });
-    // }
-
-    // // Get the container element
-    // var eleBtnContainer = document.getElementById("menu");
-
-    // // Get all buttons with class="btn" inside the container
-    // var eleBtns = eleBtnContainer.getElementsByClassName("inactive");
-
-    // // Loop through the buttons and add the active class to the current/clicked button
-    // for (var i = 0; i < eleBtns.length; i++) {
-    //     eleBtns[i].addEventListener("click", function () {
-    //         var eleCurrent = document.getElementsByClassName("active");
-
-    //         // If there's no active class
-    //         if (eleCurrent.length > 0) {
-    //             eleCurrent[0].className = eleCurrent[0].className.replace(" active", "");
-    //         }
-
-    //         // Add the active class to the current/clicked button
-    //         this.className += " active";
-    //     });
-    // }
-
-    // // Get the container element
-    // var sJButtoningBtnContainer = document.getElementById("two-piece-suit-fabric-menu");
-    // var btnTypeImage = sJButtoningBtnContainer.getElementsByClassName("dress-showcase-preview-dress");
-
-    // // Get all buttons with class="btn" inside the container
-    // var sJButtoningBtns = sJButtoningBtnContainer.getElementsByClassName("modal-body-item-list__card");
-
-    // // Loop through the buttons and add the active class to the current/clicked button
-    // for (var i = 0; i < sJButtoningBtns.length; i++) {
-    //     sJButtoningBtns[i].addEventListener("click", function () {
-    //         debugger
-    //         var sJButtoningCurrent = document.getElementsByClassName("modal-body-item-list__card modal-body-item-list__card-active");
-
-    //         // If there's no active class
-    //         if (sJButtoningCurrent.length > 0) {
-    //             for (var x; x < sJButtoningCurrent.length; x++) {
-    //                 sJButtoningCurrent[x].className = sJButtoningCurrent[x].className.replace(" modal-body-item-list__card-active", "");
-    //             }
-
-    //             //sJButtoningCurrent[0].className = sJButtoningCurrent[0].className.replace(" modal-body-item-list__card-active", "");
-    //         }
-
-    //         // Add the active class to the current/clicked button
-    //         this.className += " modal-body-item-list__card-active";
-    //         btnTypeImage.style.backgroundImage = dat[i]
-    //     });
-    // }
+            completeData.filter(function (el) {
+                if (
+                    el.buttoning.toLowerCase() === suit_Buttoning.toLowerCase() &&
+                    el.buttons.toLowerCase() === suit_Buttons.toLowerCase() &&
+                    el.button_hole_thread.toLowerCase() === suit_Button_hole_thread.toLowerCase() &&
+                    el.fabric.toLowerCase() === suit_Fabric.toLowerCase() &&
+                    el.lapel.toLowerCase() === suit_lapel.toLowerCase()
+                ) {
+                    $(".dress-showcase-preview-dress").css('background-image', `url(${el.image})`
+                    );
+                }
+            })
+        }
     </script>{% endblock content %}
