@@ -784,9 +784,12 @@
     <script>
         let currentParentLink = "";
         let activeModalId = "";
+        let completeData = "";
 
-        $(document).ready(function () {
+        $(document).ready(async function () {
 
+            let data = await getAllDataFromDatabase();
+            debugger
             $("#menu li").click(function () {
                 $('#menu li').removeClass('active');
                 $(this).addClass('active');
@@ -819,7 +822,7 @@
                 });
 
 
-                if(active_suit_Fabric == "Havanna, black" && active_product == "Two-piece suit") {
+                if (active_suit_Fabric == "Havanna, black" && active_product == "Two-piece suit") {
                     $(".dress-showcase-preview-dress").css('background-image', 'url(https://rnd.tailorstore.com/as1/fHw5MHwjRkZGRkZGfHdlYnA,/eNqd0lkOgyAQBuC79LkpSlvTu5SGjDgqLYthuX9p1ZjYJcHwBBk-_gxz3Tk0DTpGfJSBkQ60BkbaqBQXoHnBSJm2UDspGLmDeGCq/ojwdHqsLPQym2-1XhrFOg_pAlDTSdAtSTs7pTKscZw6jYED1NtKi-Xlmx8sG-WCnUMkqtluiRx8WbEOToEaVc6GOIVjDe6vwFcMH/HLucGtLmPj5aa4bSYkOg0DuE5ouVKn6J_4cvOBs9Oj-Nzfqnbk_jG_Zz.webp)');
                 }
                 else if (active_suit_Fabric == "Stockholm, brown" && active_product == "Two-piece suit") {
@@ -838,10 +841,31 @@
         });
 
 
+        function getAllDataFromDatabase(val) {
+            debugger
+            $.ajax({
+                url: (""),
+                contentType: 'application/json',
+                type: "GET",
+                data: {
+                    data: "allData",
+                },
+                dataType: 'json',
+                success: function (resp) {
+                    debugger
+                    return resp;
+                },
+                error: function (resp) {
+                    console.log("something went wrong");
+                    return resp
+                }
+            });
+        }
+
         function getDataFromDatabase(val) {
             debugger
             var serializedData = JSON.stringify([val]);
-            // var serializedData = JSON.stringify(val);
+
             $.ajax({
                 url: (""),
                 contentType: 'application/json',

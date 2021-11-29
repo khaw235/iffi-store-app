@@ -41,6 +41,37 @@ def index(request):
     trouser_back_pocket_designs       = TrouserBackPocketDesign.objects.all()
     trouser_turn_ups                  = TrouserTurnUp.objects.all()
     
+    all_details = []
+    details = {}
+
+    for instance in two_piece_suits_prods:
+        details["title"] = instance.title
+        details["image"] = instance.img.url
+        details["fabric"] = instance.fabric
+        details["lining"] = instance.lining
+        details["buttons"] = instance.buttons
+        details["button_hole_thread"] = instance.button_hole_thread
+        details["buttoning"] = instance.buttoning
+        details["lapel"] = instance.lapel
+        details["lapel_stitch"] = instance.lapel_stitch
+        details["pocket_flap"] = instance.pocket_flap
+        details["ticket_pocket"] = instance.ticket_pocket
+        details["vent"] = instance.vent
+        details["stitching_thread"] = instance.stitching_thread
+        details["sleeve_buttons_contrast"] = instance.sleeve_buttons_contrast
+        details["sleeve_buttons_thread"] = instance.sleeve_buttons_thread
+        details["neck_felt_contrast"] = instance.neck_felt_contrast
+        details["trouser_pockets"] = instance.trouser_pockets
+        details["trouser_buttoning"] = instance.trouser_buttoning
+        details["trouser_back_pocket_placement"] = instance.trouser_back_pocket_placement
+        details["trouser_back_pocket_design"] = instance.trouser_back_pocket_design
+        details["trouser_turn_up"] = instance.trouser_turn_up
+        details["price"] = float(instance.price)
+
+        all_details.append(details)
+
+        details = {}
+
 
     if request.is_ajax and request.method == "GET":
         data = request.GET.get("data",None)
@@ -53,12 +84,12 @@ def index(request):
         # data = Test.objects.all().values("title")
         # res = Test.objects.filter(title=text).values("title", "image")
         # print(res)
-        # return JsonResponse(list(res), safe=False)
+        if data == "allData":
+            return JsonResponse(all_details, safe=False)
 
 
     cart_obj, new_obj = Cart.objects.new_or_get(request)
 
-    all_details = []
     details = {}
 
     for instance in two_piece_suits_prods:
