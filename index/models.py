@@ -9,18 +9,31 @@ def get_file_ext(filepath):
 
 def upload_image_path(instance, filepath):
     name, ext = get_file_ext(filepath)
-    filename = instance.fabric + '-' + instance.lining + '-' + instance.buttons + '-' + \
-            instance.button_hole_thread + '-' + instance.buttoning + '-' + instance.lapel + '-' + \
-                instance.pockets + '-' + instance.vent + '-' + instance.contrasts + '-' + \
-                    instance.trouser_pockets + '-' + instance.trouser_buttoning + '-' + \
-                        instance.trouser_back_pocket + '-' + instance.trouser_turn_up + ext
+    if instance.type == "two_piece_suit" or instance.type == "three_piece_suit":
+        filename = instance.type + '-' +instance.fabric + '-' + instance.lining + '-' + instance.buttons + '-' + \
+                instance.button_hole_thread + '-' + instance.buttoning + '-' + instance.lapel + \
+                    '-' + instance.lapel_stitch + '-' + instance.pocket_flap + '-' + \
+                        instance.ticket_pocket + '-' + instance.vent + '-' + \
+                            instance.stitching_thread + '-' + instance.sleeve_buttons_contrast + \
+                                '-' + instance.sleeve_buttons_thread + '-' + instance.neck_felt_contrast + \
+                                    '-' + instance.trouser_pockets + '-' + instance.trouser_buttoning + '-' + \
+                            instance.trouser_back_pocket_placement + '-' + instance.trouser_back_pocket_design + \
+                                '-' + instance.trouser_turn_up + ext
+
     return "products/{filename}".format(filename=filename)
 
 # Create your models here.
 
 class TwoPieceSuitSideBarElement(models.Model):
     title = models.CharField(max_length = 100, verbose_name = "Title")
-    img = models.FileField(upload_to = 'suit-sidebar-elements/', null = True, verbose_name = "Picture")
+    img = models.FileField(upload_to = 'two-piece-suit-sidebar-elements/', null = True, verbose_name = "Picture")
+
+    def __str__(self):
+        return f"{self.title}"
+
+class ThreePieceSuitSideBarElement(models.Model):
+    title = models.CharField(max_length = 100, verbose_name = "Title")
+    img = models.FileField(upload_to = 'three-piece-suit-sidebar-elements/', null = True, verbose_name = "Picture")
 
     def __str__(self):
         return f"{self.title}"
@@ -329,8 +342,10 @@ class TwoPieceSuit(models.Model):
         choices = TROUSER_TURN_UPS, null = True, \
             verbose_name = "Trouser Turn Up")
     price = models.DecimalField(decimal_places = 2, max_digits = 20, default = 99.99)
-    slug = models.SlugField(max_length=1000, null = True, blank = True, db_index = True)
-    counts = models.IntegerField(editable=False, default=1, null=False)
+    slug = models.SlugField(max_length = 1000, null = True, blank = True, db_index = True)
+    counts = models.IntegerField(editable = False, default = 1, null = False)
+    type = models.CharField(max_length = 100, editable = False, \
+        default = "two_piece_suit", null = False)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.fabric + '-' + self.lining + '-' + self.buttons + '-' + \
@@ -349,7 +364,69 @@ class TwoPieceSuit(models.Model):
 
 class ThreePieceSuit(models.Model):
     title = models.CharField(max_length = 100, verbose_name = "Title")
-    img = models.FileField(upload_to = 'products/', null = True, verbose_name = "Picture")
+    img = models.FileField(upload_to = upload_image_path, null = True, \
+        verbose_name = "Picture")
+    fabric = models.CharField(max_length = 100, choices = FABRICS, \
+        null = True)
+    lining = models.CharField(max_length = 100, choices = LININGS, \
+        null = True)
+    buttons = models.CharField(max_length = 100, choices = BUTTONS, \
+        null = True)
+    button_hole_thread = models.CharField(max_length = 100, \
+        choices = BUTTON_HOLE_THREADS, null = True, \
+            verbose_name = "Button Hole Thread")
+    buttoning = models.CharField(max_length = 100, \
+        choices = BUTTONINGS, null = True)
+    lapel = models.CharField(max_length = 100, choices = LAPELS, \
+        null = True)
+    lapel_stitch = models.CharField(max_length = 100, choices = LAPEL_STITCHES, \
+        null = True, verbose_name="Lapel Sticth")
+    pocket_flap = models.CharField(max_length = 100, choices = POCKET_FLAPS, \
+        null = True, verbose_name="Pocket Flap")
+    ticket_pocket = models.CharField(max_length = 100, choices = TICKET_POCKETS, \
+        null = True, verbose_name="Ticket Pocket")
+    vent = models.CharField(max_length = 100, choices = VENTS, \
+        null = True)
+    stitching_thread = models.CharField(max_length = 100, choices = STITCHING_THREADS, \
+        null = True)
+    sleeve_buttons_contrast = models.CharField(max_length = 100, choices = SLEEVE_BUTTONS_CONTRASTS, \
+        null = True, verbose_name="Sleeve Buttons Contrast")
+    sleeve_buttons_thread = models.CharField(max_length = 100, choices = SLEEVE_BUTTONS_THREADS, \
+        null = True, verbose_name="Sleeve Buttons Thread")
+    neck_felt_contrast = models.CharField(max_length = 100, choices = NECK_FELT_CONTRASTS, \
+        null = True, verbose_name="Neck Felt Contrast")
+    trouser_pockets = models.CharField(max_length = 100, \
+        choices = TROUSER_POCKETS, null = True, \
+            verbose_name = "Trouser Pockets")
+    trouser_buttoning = models.CharField(max_length = 100, \
+        choices = TROUSER_BUTTONINGS, null = True, \
+            verbose_name = "Trouser Buttoning")
+    trouser_back_pocket_placement = models.CharField(max_length = 100, \
+        choices = TROUSER_BACK_POCKET_PLACEMENTS, null = True, \
+            verbose_name = "Trouser Back Pocket Placement")
+    trouser_back_pocket_design = models.CharField(max_length = 100, \
+        choices = TROUSER_BACK_POCKET_DESIGNS, null = True, \
+            verbose_name = "Trouser Back Pocket Design")
+    trouser_turn_up = models.CharField(max_length = 100, \
+        choices = TROUSER_TURN_UPS, null = True, \
+            verbose_name = "Trouser Turn Up")
+    price = models.DecimalField(decimal_places = 2, max_digits = 20, default = 99.99)
+    slug = models.SlugField(max_length = 1000, null = True, blank = True, db_index = True)
+    counts = models.IntegerField(editable = False, default = 1, null = False)
+    type = models.CharField(max_length = 100, editable = False, \
+        default = "three_piece_suit", null = False)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.fabric + '-' + self.lining + '-' + self.buttons + '-' + \
+            self.button_hole_thread + '-' + self.buttoning + '-' + self.lapel + '-' + \
+                self.lapel_stitch + '-' + self.pocket_flap + '-' + self.ticket_pocket + \
+                    '-' + self.vent + '-' + self.stitching_thread + '-' +  \
+                        self.sleeve_buttons_contrast + '-' +  self.sleeve_buttons_thread + \
+                            '-' + self.neck_felt_contrast + '-' + self.trouser_pockets + \
+                                '-' + self.trouser_buttoning + '-' + \
+                        self.trouser_back_pocket_placement + '-' + \
+                            self.trouser_back_pocket_design + '-' +  self.trouser_turn_up)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.title}"

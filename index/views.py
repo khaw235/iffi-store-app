@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, get_user_model
 from django.shortcuts import render, redirect
-from .models import TwoPieceSuitSideBarElement, TwoPieceSuit, \
-    SuitProduct, Fabric, Lining, Button, ButtonHoleThread, \
+from .models import TwoPieceSuitSideBarElement, ThreePieceSuitSideBarElement, \
+    TwoPieceSuit, ThreePieceSuit, SuitProduct, Fabric, Lining, Button, ButtonHoleThread, \
         Buttoning, Lapel, LapelStitch, PocketFlap, TicketPocket, Vent, \
             StitchingThread, SleeveButtonContrast, SleeveButtonThread, \
                 NeckFeltContrast, TrouserPocket, TrouserButtoning, \
@@ -11,66 +11,68 @@ from cart.models import Cart
 from json import dumps
 from django.http import JsonResponse
 from .forms import UserLoginForm, UserRegistrationForm
-from django.views.decorators.csrf import csrf_exempt,csrf_protect #Add this
+from django.views.decorators.csrf import csrf_exempt, csrf_protect #Add this
 
 
 import json
 # Create your views here.
 @csrf_exempt
 def index(request):
-    suit_products                     = SuitProduct.objects.all()
-    two_piece_suit_side_bar_elements  = TwoPieceSuitSideBarElement.objects.all()
-    two_piece_suits_prods             = TwoPieceSuit.objects.all()
-    fabrics                           = Fabric.objects.all()
-    linings                           = Lining.objects.all()
-    buttons                           = Button.objects.all()
-    button_hole_threads               = ButtonHoleThread.objects.all()
-    buttonings                        = Buttoning.objects.all()
-    lapels                            = Lapel.objects.all()
-    lapel_stitches                    = LapelStitch.objects.all()
-    pocket_flaps                      = PocketFlap.objects.all()
-    ticket_pockets                    = TicketPocket.objects.all()
-    vents                             = Vent.objects.all()
-    stitching_threads                 = StitchingThread.objects.all()
-    sleeve_buttons_contrasts          = SleeveButtonContrast.objects.all()
-    sleeve_buttons_threads            = SleeveButtonThread.objects.all()
-    neck_felt_contrasts               = NeckFeltContrast.objects.all()
-    trouser_pockets                   = TrouserPocket.objects.all()
-    trouser_buttonings                = TrouserButtoning.objects.all()
-    trouser_back_pocket_placements    = TrouserBackPocketPlacement.objects.all()
-    trouser_back_pocket_designs       = TrouserBackPocketDesign.objects.all()
-    trouser_turn_ups                  = TrouserTurnUp.objects.all()
+    suit_products                      = SuitProduct.objects.all()
+    two_piece_suit_side_bar_elements   = TwoPieceSuitSideBarElement.objects.all()
+    three_piece_suit_side_bar_elements = ThreePieceSuitSideBarElement.objects.all()
+    two_piece_suits_prods              = TwoPieceSuit.objects.all()
+    fabrics                            = Fabric.objects.all()
+    linings                            = Lining.objects.all()
+    buttons                            = Button.objects.all()
+    button_hole_threads                = ButtonHoleThread.objects.all()
+    buttonings                         = Buttoning.objects.all()
+    lapels                             = Lapel.objects.all()
+    lapel_stitches                     = LapelStitch.objects.all()
+    pocket_flaps                       = PocketFlap.objects.all()
+    ticket_pockets                     = TicketPocket.objects.all()
+    vents                              = Vent.objects.all()
+    stitching_threads                  = StitchingThread.objects.all()
+    sleeve_buttons_contrasts           = SleeveButtonContrast.objects.all()
+    sleeve_buttons_threads             = SleeveButtonThread.objects.all()
+    neck_felt_contrasts                = NeckFeltContrast.objects.all()
+    trouser_pockets                    = TrouserPocket.objects.all()
+    trouser_buttonings                 = TrouserButtoning.objects.all()
+    trouser_back_pocket_placements     = TrouserBackPocketPlacement.objects.all()
+    trouser_back_pocket_designs        = TrouserBackPocketDesign.objects.all()
+    trouser_turn_ups                   = TrouserTurnUp.objects.all()
     
     all_details = []
-    details = {}
+    two_piece_suit_details = {"product": "Two-piece suit"}
+    three_piece_suit_details = {"product": "three-piece suit"}
 
     for instance in two_piece_suits_prods:
-        details["title"] = instance.title
-        details["image"] = instance.img.url
-        details["fabric"] = instance.fabric
-        details["lining"] = instance.lining
-        details["buttons"] = instance.buttons
-        details["button_hole_thread"] = instance.button_hole_thread
-        details["buttoning"] = instance.buttoning
-        details["lapel"] = instance.lapel
-        details["lapel_stitch"] = instance.lapel_stitch
-        details["pocket_flap"] = instance.pocket_flap
-        details["ticket_pocket"] = instance.ticket_pocket
-        details["vent"] = instance.vent
-        details["stitching_thread"] = instance.stitching_thread
-        details["sleeve_buttons_contrast"] = instance.sleeve_buttons_contrast
-        details["sleeve_buttons_thread"] = instance.sleeve_buttons_thread
-        details["neck_felt_contrast"] = instance.neck_felt_contrast
-        details["trouser_pockets"] = instance.trouser_pockets
-        details["trouser_buttoning"] = instance.trouser_buttoning
-        details["trouser_back_pocket_placement"] = instance.trouser_back_pocket_placement
-        details["trouser_back_pocket_design"] = instance.trouser_back_pocket_design
-        details["trouser_turn_up"] = instance.trouser_turn_up
-        details["price"] = float(instance.price)
+        two_piece_suit_details["title"] = instance.title
+        two_piece_suit_details["image"] = instance.img.url
+        two_piece_suit_details["fabric"] = instance.fabric
+        two_piece_suit_details["lining"] = instance.lining
+        two_piece_suit_details["buttons"] = instance.buttons
+        two_piece_suit_details["button_hole_thread"] = instance.button_hole_thread
+        two_piece_suit_details["buttoning"] = instance.buttoning
+        two_piece_suit_details["lapel"] = instance.lapel
+        two_piece_suit_details["lapel_stitch"] = instance.lapel_stitch
+        two_piece_suit_details["pocket_flap"] = instance.pocket_flap
+        two_piece_suit_details["ticket_pocket"] = instance.ticket_pocket
+        two_piece_suit_details["vent"] = instance.vent
+        two_piece_suit_details["stitching_thread"] = instance.stitching_thread
+        two_piece_suit_details["sleeve_buttons_contrast"] = instance.sleeve_buttons_contrast
+        two_piece_suit_details["sleeve_buttons_thread"] = instance.sleeve_buttons_thread
+        two_piece_suit_details["neck_felt_contrast"] = instance.neck_felt_contrast
+        two_piece_suit_details["trouser_pockets"] = instance.trouser_pockets
+        two_piece_suit_details["trouser_buttoning"] = instance.trouser_buttoning
+        two_piece_suit_details["trouser_back_pocket_placement"] = instance.trouser_back_pocket_placement
+        two_piece_suit_details["trouser_back_pocket_design"] = instance.trouser_back_pocket_design
+        two_piece_suit_details["trouser_turn_up"] = instance.trouser_turn_up
+        two_piece_suit_details["price"] = float(instance.price)
 
-        all_details.append(details)
+        all_details.append(two_piece_suit_details)
 
-        details = {}
+        two_piece_suit_details = {"product": "Two-piece suit"}
 
 
     if request.is_ajax and request.method == "GET":
@@ -86,43 +88,14 @@ def index(request):
         # print(res)
         if data == "allData":
             return JsonResponse(all_details, safe=False)
-
+        
+        if data == "threePieceSuitSidebarEle":
+            return JsonResponse(three_piece_suit_side_bar_elements, safe=False)
 
     cart_obj, new_obj = Cart.objects.new_or_get(request)
 
-    details = {}
-
-    for instance in two_piece_suits_prods:
-        details["title"] = instance.title
-        details["image"] = instance.img.url
-        details["fabric"] = instance.fabric
-        details["lining"] = instance.lining
-        details["buttons"] = instance.buttons
-        details["button_hole_thread"] = instance.button_hole_thread
-        details["buttoning"] = instance.buttoning
-        details["lapel"] = instance.lapel
-        details["lapel_stitch"] = instance.lapel_stitch
-        details["pocket_flap"] = instance.pocket_flap
-        details["ticket_pocket"] = instance.ticket_pocket
-        details["vent"] = instance.vent
-        details["stitching_thread"] = instance.stitching_thread
-        details["sleeve_buttons_contrast"] = instance.sleeve_buttons_contrast
-        details["sleeve_buttons_thread"] = instance.sleeve_buttons_thread
-        details["neck_felt_contrast"] = instance.neck_felt_contrast
-        details["trouser_pockets"] = instance.trouser_pockets
-        details["trouser_buttoning"] = instance.trouser_buttoning
-        details["trouser_back_pocket_placement"] = instance.trouser_back_pocket_placement
-        details["trouser_back_pocket_design"] = instance.trouser_back_pocket_design
-        details["trouser_turn_up"] = instance.trouser_turn_up
-        details["price"] = float(instance.price)
-
-        all_details.append(details)
-
-        details = {}
-
-    #print(all_details[0], '\n\n\n', all_details[-1])
-
     combines_ele_names = []
+
     for item in two_piece_suit_side_bar_elements:
         temp_title = str(item.title)
         #print(temp_title)
@@ -132,12 +105,6 @@ def index(request):
             
         else:
             combines_ele_names.append((item.title, item.img.url, temp_title))
-        
-    
-    #print(combines_ele_names)
-
-
-
 
     context = {
         "cart": cart_obj,

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
-from .models import TwoPieceSuitSideBarElement, TwoPieceSuit, \
-    SuitProduct, Fabric, Lining, Button, ButtonHoleThread, \
+from .models import TwoPieceSuitSideBarElement, ThreePieceSuitSideBarElement, \
+    TwoPieceSuit, ThreePieceSuit, SuitProduct, Fabric, Lining, Button, ButtonHoleThread, \
         Buttoning, Lapel, LapelStitch, PocketFlap, TicketPocket, Vent, \
             StitchingThread, SleeveButtonContrast, SleeveButtonThread, \
                 NeckFeltContrast, TrouserPocket, TrouserButtoning, \
@@ -14,8 +14,14 @@ class TwoPieceSuitAdmin(admin.ModelAdmin):
     #readonly_fields = ("slug",)
     prepopulated_fields = {"slug": ("fabric", "lining", "buttons", "button_hole_thread", "buttoning", "lapel", "lapel_stitch", "pocket_flap", "ticket_pocket", "vent", "stitching_thread", "sleeve_buttons_contrast", "sleeve_buttons_thread", "neck_felt_contrast",  "trouser_pockets", "trouser_buttoning", "trouser_back_pocket_placement", "trouser_back_pocket_design", "trouser_turn_up")}
 
+class ThreePieceSuitAdmin(admin.ModelAdmin):
+    #readonly_fields = ("slug",)
+    prepopulated_fields = {"slug": ("fabric", "lining", "buttons", "button_hole_thread", "buttoning", "lapel", "lapel_stitch", "pocket_flap", "ticket_pocket", "vent", "stitching_thread", "sleeve_buttons_contrast", "sleeve_buttons_thread", "neck_felt_contrast",  "trouser_pockets", "trouser_buttoning", "trouser_back_pocket_placement", "trouser_back_pocket_design", "trouser_turn_up")}
+
 admin.site.register(TwoPieceSuitSideBarElement)
+admin.site.register(ThreePieceSuitSideBarElement)
 admin.site.register(TwoPieceSuit, TwoPieceSuitAdmin)
+admin.site.register(ThreePieceSuit, ThreePieceSuitAdmin)
 admin.site.register(SuitProduct)
 admin.site.register(Fabric)
 admin.site.register(Lining)
