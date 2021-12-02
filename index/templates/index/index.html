@@ -826,17 +826,77 @@
                     let active_fabric = $(
                         "#two-piece-suit-Fabric .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
                     )[0].innerText;
+
+                    let active_lining = $(
+                        "#two-piece-suit-Lining .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
                     let active_buttons = $(
                         "#two-piece-suit-Buttons .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
                     )[0].innerText;
+
                     let active_button_hole_thread = $(
                         "#two-piece-suit-Button-hole-thread .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
                     )[0].innerText;
+
                     let active_buttoning = $(
                         "#two-piece-suit-Buttoning .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
                     )[0].innerText;
+
                     let active_lapel = $(
                         "#two-piece-suit-Lapel .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_lapel_stitch = $(
+                        "#two-piece-suit-Lapel-stitch .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_pocket_flap = $(
+                        "#two-piece-suit-Pocket-flap .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_ticket_pocket = $(
+                        "#two-piece-suit-Ticket-pocket .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_vent = $(
+                        "#two-piece-suit-Vent .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_stitching_thread = $(
+                        "#two-piece-suit-Stitching-thread .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_sleeve_buttons_contrast = $(
+                        "#two-piece-suit-Sleeve-buttons-contrast .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_sleeve_buttons_thread = $(
+                        "#two-piece-suit-Sleeve-buttons-thread .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_neck_felt_contrast = $(
+                        "#two-piece-suit-Neck-felt-contrast .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_trouser_pockets = $(
+                        "#two-piece-suit-Trouser-pockets .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_trouser_buttoning = $(
+                        "#two-piece-suit-Trouser-buttoning .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_trouser_back_pocket_placement = $(
+                        "#two-piece-suit-Trouser-back-pocket-placement .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_trouser_back_pocket_design = $(
+                        "#two-piece-suit-Trouser-back-pocket-design .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
+                    )[0].innerText;
+
+                    let active_trouser_turn_up = $(
+                        "#two-piece-suit-Trouser-turn-up .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid"
                     )[0].innerText;
                     // let active_suit_packets = $("#two-piece-suit-Pocket .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
                     // let active_suit_contrasts = $("#two-piece-suit-Contrasts .modal-body .modal-body-item-list__card-active .modal-body-item-list__card--mid")[0].innerText;
@@ -844,59 +904,101 @@
                     let resss = await filterAndSetBgImage({
                         product: active_product,
                         fabric: active_fabric,
+                        lining: active_lining,
                         buttons: active_buttons,
                         button_hole_thread: active_button_hole_thread,
                         buttoning: active_buttoning,
                         lapel: active_lapel,
+                        lapel_stitch: active_lapel_stitch,
+                        pocket_flap: active_pocket_flap,
+                        ticket_pocket: active_ticket_pocket,
+                        vent: active_vent,
+                        stitching_thread: active_stitching_thread,
+                        sleeve_buttons_contrast: active_sleeve_buttons_contrast,
+                        sleeve_buttons_thread: active_sleeve_buttons_thread,
+                        neck_felt_contrast: active_neck_felt_contrast,
+                        trouser_pockets: active_trouser_pockets,
+                        trouser_buttoning: active_trouser_buttoning,
+                        trouser_back_pocket_placement: active_trouser_back_pocket_placement,
+                        trouser_back_pocket_design: active_trouser_back_pocket_design,
+                        trouser_turn_up: active_trouser_turn_up
                     });
                 });
         });
 
 
-        function getDataFromDatabase(val) {
+        // function getDataFromDatabase(val) {
 
-            var serializedData = JSON.stringify([val]);
+        //     var serializedData = JSON.stringify([val]);
 
-            $.ajax({
-                url: (""),
-                contentType: 'application/json',
-                type: "GET",
-                data: {
-                    data: serializedData,
-                    'csrfmiddlewaretoken': '{{ csrf_token }}',
-                },
-                dataType: 'json',
-                success: function (resp) {
-                    return resp;
-                },
-                error: function (resp) {
-                    console.log("something went wrong");
-                    return resp
-                }
-            });
-        }
+        //     $.ajax({
+        //         url: (""),
+        //         contentType: 'application/json',
+        //         type: "GET",
+        //         data: {
+        //             data: serializedData,
+        //             'csrfmiddlewaretoken': '{{ csrf_token }}',
+        //         },
+        //         dataType: 'json',
+        //         success: function (resp) {
+        //             return resp;
+        //         },
+        //         error: function (resp) {
+        //             console.log("something went wrong");
+        //             return resp
+        //         }
+        //     });
+        // }
 
         function filterAndSetBgImage(val) {
             const {
                 product,
                 fabric,
+                lining,
                 buttons,
                 button_hole_thread,
                 buttoning,
-                lapel
+                lapel,
+                lapel_stitch,
+                pocket_flap,
+                ticket_pocket,
+                vent,
+                stitching_thread,
+                sleeve_buttons_contrast,
+                sleeve_buttons_thread,
+                neck_felt_contrast,
+                trouser_pockets,
+                trouser_buttoning,
+                trouser_back_pocket_placement,
+                trouser_back_pocket_design,
+                trouser_turn_up
             } = val;
 
             completeData.filter(function (el) {
                 if (
                     el.product.toLowerCase() === product.toLowerCase() &&
-                    el.buttoning.toLowerCase() === buttoning.toLowerCase() &&
+                    el.fabric.toLowerCase() === fabric.toLowerCase() &&
+                    el.lining.toLowerCase() === lining.toLowerCase() &&
                     el.buttons.toLowerCase() === buttons.toLowerCase() &&
                     el.button_hole_thread.toLowerCase() === button_hole_thread.toLowerCase() &&
-                    el.fabric.toLowerCase() === fabric.toLowerCase() &&
-                    el.lapel.toLowerCase() === lapel.toLowerCase()
+                    el.buttoning.toLowerCase() === buttoning.toLowerCase() &&
+                    el.lapel.toLowerCase() === lapel.toLowerCase() &&
+                    el.lapel_stitch.toLowerCase() === lapel_stitch.toLowerCase() &&
+                    el.pocket_flap.toLowerCase() === pocket_flap.toLowerCase() &&
+                    el.ticket_pocket.toLowerCase() === ticket_pocket.toLowerCase() &&
+                    el.vent.toLowerCase() === vent.toLowerCase() &&
+                    el.stitching_thread.toLowerCase() === stitching_thread.toLowerCase() &&
+                    el.sleeve_buttons_contrast.toLowerCase() === sleeve_buttons_contrast.toLowerCase() &&
+                    el.sleeve_buttons_thread.toLowerCase() === sleeve_buttons_thread.toLowerCase() &&
+                    el.neck_felt_contrast.toLowerCase() === neck_felt_contrast.toLowerCase() &&
+                    el.trouser_pockets.toLowerCase() === trouser_pockets.toLowerCase() &&
+                    el.trouser_buttoning.toLowerCase() === trouser_buttoning.toLowerCase() &&
+                    el.trouser_back_pocket_placement.toLowerCase() === trouser_back_pocket_placement.toLowerCase() &&
+                    el.trouser_back_pocket_design.toLowerCase() === trouser_back_pocket_design.toLowerCase() &&
+                    el.trouser_turn_up.toLowerCase() === trouser_turn_up.toLowerCase()
                 ) {
-                    $(".dress-showcase-preview-dress").css('background-image', `url(${el.image})`
-                    );
+                    $(".dress-showcase-preview-dress").css('background-image', `url(${el.image})`);
+                    $(".dress-showcase-preview-dress-price").text(`Rs.${el.price}`);
                 }
             })
         }

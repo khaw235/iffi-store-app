@@ -360,7 +360,7 @@ class TwoPieceSuit(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"Two Piece Suit - Details ==> ({self.fabric + '-' + self.lining + '-' + self.buttons + '-' + self.button_hole_thread + '-' + self.buttoning + '-' + self.lapel + '-' + self.lapel_stitch + '-' + self.pocket_flap + '-' + self.ticket_pocket + '-' + self.vent + '-' + self.stitching_thread + '-' + self.sleeve_buttons_contrast + '-' +  self.sleeve_buttons_thread + '-' + self.neck_felt_contrast + '-' + self.trouser_pockets + '-' + self.trouser_buttoning + '-' + self.trouser_back_pocket_placement + '-' + self.trouser_back_pocket_design + '-' +  self.trouser_turn_up})"
 
 class ThreePieceSuit(models.Model):
     title = models.CharField(max_length = 100, verbose_name = "Title")
