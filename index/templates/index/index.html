@@ -814,6 +814,26 @@
             });
             $(activeModalId + " .modal-body-item-list .modal-body-item-list__card").click(
                 async function () {
+                    debugger
+                    // get All products data
+                    await $.ajax({
+                        url: (""),
+                        contentType: 'application/json',
+                        type: "GET",
+                        data: {
+                            data: "threePieceSuitSidebarEle",
+                        },
+                        dataType: 'json',
+                        success: function (resp) {
+                            debugger
+                            console.log(resp);
+                        },
+                        error: function (resp) {
+                            console.log("something went wrong");
+                        }
+                    });
+
+
                     var background = $('.dress-showcase-preview-dress').css('background-image')
                     $(activeModalId + " .modal-body-item-list .modal-body-item-list__card")
                         .removeClass('modal-body-item-list__card-active');
@@ -925,30 +945,6 @@
                     });
                 });
         });
-
-
-        // function getDataFromDatabase(val) {
-
-        //     var serializedData = JSON.stringify([val]);
-
-        //     $.ajax({
-        //         url: (""),
-        //         contentType: 'application/json',
-        //         type: "GET",
-        //         data: {
-        //             data: serializedData,
-        //             'csrfmiddlewaretoken': '{{ csrf_token }}',
-        //         },
-        //         dataType: 'json',
-        //         success: function (resp) {
-        //             return resp;
-        //         },
-        //         error: function (resp) {
-        //             console.log("something went wrong");
-        //             return resp
-        //         }
-        //     });
-        // }
 
         function filterAndSetBgImage(val) {
             const {
