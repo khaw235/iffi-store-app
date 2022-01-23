@@ -86,12 +86,11 @@ def index(request):
         # data = Test.objects.all().values("title")
         # res = Test.objects.filter(title=text).values("title", "image")
         # print(res)
-        if data == "allData":
+        if data == "AllProductsData":
             return JsonResponse(all_details, safe=False)
         
         if data == "threePieceSuitSidebarEle":
-            print(data)
-            # return JsonResponse(three_piece_suit_side_bar_elements, safe=False)
+            return JsonResponse(three_piece_suit_side_bar_elements, safe=False)
 
     cart_obj, new_obj = Cart.objects.new_or_get(request)
 
